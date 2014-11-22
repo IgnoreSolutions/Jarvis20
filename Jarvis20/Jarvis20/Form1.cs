@@ -29,10 +29,11 @@ namespace Jarvis20
             perfMemCount.NextValue();
         }
 
+        // This is the opening Text to speak, and quotes represent what he will say.
         private void Form1_Load(object sender, EventArgs e)
         {
             synth.Speak("Welcome to Jarvis version two point ohh, beta build");
-
+            GetCurrentInformation();
         }
 
         private void GetCurrentInformation()
@@ -43,8 +44,22 @@ namespace Jarvis20
             int curCpuPercentage = (int)perfCpuCount.NextValue();
             int curMemAvail = (int)perfMemCount.NextValue();
             lvi.Text = currentDateTime;
-            lvi.SubItems.Add(curCpuPercentage.ToString());
-            lvi.SubItems.Add(curMemAvail.ToString());
+            lvi.SubItems.Add(String.Format("{0}%", curCpuPercentage.ToString()));
+            lvi.SubItems.Add(String.Format("{0} MB", curMemAvail.ToString()));
+            listView1.Items.Add(lvi);
+            //This will show the textbox, how long the system has been up.
+            TimeSpan uptimeSpan = TimeSpan.FromSeconds(perfUptimeCount.NextValue());
+            string systemUptimeMessage = string.Format("{0} hrs {1} mins", (int)uptimeSpan.Hours, (int)uptimeSpan.Minutes);
+            uptimeTextBox.Text = systemUptimeMessage;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void uptimeTextBox_TextChanged(object sender, EventArgs e)
+        {
 
         }
 
