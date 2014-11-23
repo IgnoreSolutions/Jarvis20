@@ -69,8 +69,8 @@ namespace Jarvis20
                     {
                         if (curCpuPercentage == 100)
                         {
-                            string cpuLoadVocalMessage = String.Format("WARNING: Holy crap your CPU is about to catch fire!", curCpuPercentage);
-                            Speak(cpuLoadVocalMessage, VoiceGender.Male, 3);
+                            string cpuLoadVocalMessage = String.Format("WARNING: Your CPU is at 100% Stop your killing me!", curCpuPercentage);
+                            Speak(cpuLoadVocalMessage, VoiceGender.Male, 1);
                         }
                         else
                         {
