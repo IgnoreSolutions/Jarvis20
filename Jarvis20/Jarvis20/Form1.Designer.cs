@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.uptimeTextBox = new System.Windows.Forms.TextBox();
             this.pauseButton = new System.Windows.Forms.Button();
+            this.writeToLogFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -97,17 +98,28 @@
             this.pauseButton.UseVisualStyleBackColor = true;
             this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
             // 
+            // writeToLogFile
+            // 
+            this.writeToLogFile.Location = new System.Drawing.Point(692, 349);
+            this.writeToLogFile.Name = "writeToLogFile";
+            this.writeToLogFile.Size = new System.Drawing.Size(91, 43);
+            this.writeToLogFile.TabIndex = 5;
+            this.writeToLogFile.Text = "Write to Log";
+            this.writeToLogFile.UseVisualStyleBackColor = true;
+            this.writeToLogFile.Click += new System.EventHandler(this.writeToLogFile_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(795, 493);
+            this.Controls.Add(this.writeToLogFile);
             this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.uptimeTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);
             this.Name = "Form1";
-            this.Text = "Jarvis Beta Build";
+            this.Text = "Jarvis Beta Build v1.35";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -125,6 +137,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox uptimeTextBox;
         private System.Windows.Forms.Button pauseButton;
+        private System.Windows.Forms.Button writeToLogFile;
     }
 }
 

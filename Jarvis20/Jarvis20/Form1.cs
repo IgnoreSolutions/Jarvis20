@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Speech.Synthesis;
 using System.Diagnostics;
 using System.Threading;
+using System.IO;
 
 namespace Jarvis20
 {
@@ -35,7 +36,7 @@ namespace Jarvis20
         private void Form1_Load(object sender, EventArgs e)
         {
             Control.CheckForIllegalCrossThreadCalls = false;
-            synth.Speak("Welcome to Jarvis version two point ohh, beta build");
+            synth.Speak("Welcome to Jarvis version two point three five, beta build");
             GetCurrentInformation();
             Thread thrd = new Thread(loop);
             thrd.Start();
@@ -152,5 +153,49 @@ namespace Jarvis20
         {
             Environment.Exit(0);
         }
+
+        private void writeToLogFile_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Title = "Save log as...";
+            sfd.Filter = "Text File (*.txt)|*.txt|All Files (*.*)|*.*";
+            DialogResult dr = sfd.ShowDialog();
+            switch(dr)
+            {
+                case(DialogResult.OK):
+                    WriteToLogFile(sfd.FileName);
+                    MessageBox.Show(String.Format("File written to {0} successfully!", sfd.FileName), 
+                        "Information", 
+                        MessageBoxButtons.OK, 
+                        MessageBoxIcon.Information);
+                    break;
+                case(DialogResult.Cancel):
+
+                    break;
+            }
+        }
+
+        private void WriteToLogFile(string fileToSave)
+        {
+            StreamWriter sw = new StreamWriter(fileToSave);
+            try
+            {
+                sw.WriteLine("Time\t\t\tCPU Usage %\tMem Avail MB");
+                foreach (ListViewItem lvi in listView1.Items)
+                {
+                    string date = lvi.Text;
+                    string cpu = lvi.SubItems[1].Text;
+                    string mem = lvi.SubItems[2].Text;
+                    sw.WriteLine(String.Format("{0}\t{1}\t\t{2}", date, cpu, mem));
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error while writing to file:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            sw.Flush();
+            
+        }
+        //
     }
 }
