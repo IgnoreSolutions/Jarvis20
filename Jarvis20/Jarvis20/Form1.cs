@@ -26,7 +26,6 @@ namespace Jarvis20
         public Form1()
         {
             Font = SystemFonts.MessageBoxFont;
-            //Font = SystemFonts.GetFontByName("Comic Sans");
             InitializeComponent();
             perfUptimeCount.NextValue();
             perfCpuCount.NextValue();
@@ -37,7 +36,7 @@ namespace Jarvis20
         private void Form1_Load(object sender, EventArgs e)
         {
             Control.CheckForIllegalCrossThreadCalls = false;
-            synth.Speak("Welcome to Jarvis version two point three five, beta build");
+            synth.Speak("Welcome to Jarvis version two point four five, beta build");
             GetCurrentInformation();
             Thread thrd = new Thread(loop);
             thrd.Start();
@@ -209,14 +208,17 @@ namespace Jarvis20
 
         }
 
+        // This tells the computer to look for HardWare Specs
         private void button1_Click(object sender, EventArgs e)
         {
             string proc = GetComponet("Win32_Processor", "Name");
             string videoCard = GetComponet("Win32_VideoController", "Name");
             string moboIdent = GetComponet("Win32_BaseBoard", "Product");
+            string soundIdent = GetComponet("Win32_SoundDevice", "Name");
 
-            MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nMotherboard Identifier: {2}", proc, videoCard, moboIdent),
-                "Processor Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nMotherboard Identifier: {2}\nSound Card: ", 
+            proc, videoCard, moboIdent, soundIdent),
+                "System Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private static string GetComponet(string hwclass, string syntax)
