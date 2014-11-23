@@ -39,6 +39,7 @@
             this.writeToLogFile = new System.Windows.Forms.Button();
             this.CPUTemp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Specs_Button = new System.Windows.Forms.Button();
+            this.GpuTemp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listView1
@@ -50,8 +51,9 @@
             this.timeHeader,
             this.cpuHeader,
             this.memHeader,
-            this.CPUTemp});
-            this.listView1.Location = new System.Drawing.Point(12, 12);
+            this.CPUTemp,
+            this.GpuTemp});
+            this.listView1.Location = new System.Drawing.Point(16, 12);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(771, 331);
             this.listView1.TabIndex = 0;
@@ -129,6 +131,11 @@
             this.Specs_Button.UseVisualStyleBackColor = true;
             this.Specs_Button.Click += new System.EventHandler(this.button1_Click);
             // 
+            // GpuTemp
+            // 
+            this.GpuTemp.Text = "GPU Tempeture";
+            this.GpuTemp.Width = 103;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,6 +170,7 @@
         private System.Windows.Forms.Button writeToLogFile;
         private System.Windows.Forms.ColumnHeader CPUTemp;
         private System.Windows.Forms.Button Specs_Button;
+        private System.Windows.Forms.ColumnHeader GpuTemp;
     }
 }
 

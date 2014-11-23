@@ -214,6 +214,7 @@ namespace Jarvis20
             string proc = GetComponet("Win32_Processor", "Name");
             string videoCard = GetComponet("Win32_VideoController", "Name");
             string moboIdent = GetComponet("Win32_BaseBoard", "Product");
+
             MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nMotherboard Identifier: {2}", proc, videoCard, moboIdent),
                 "Processor Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
