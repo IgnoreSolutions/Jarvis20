@@ -32,12 +32,13 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.timeHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cpuHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tempColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.memHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.uptimeTextBox = new System.Windows.Forms.TextBox();
             this.pauseButton = new System.Windows.Forms.Button();
             this.writeToLogFile = new System.Windows.Forms.Button();
+            this.CPUTemp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Specs_Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -48,14 +49,15 @@
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.timeHeader,
             this.cpuHeader,
-            this.tempColumn,
-            this.memHeader});
+            this.memHeader,
+            this.CPUTemp});
             this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(771, 331);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // timeHeader
             // 
@@ -64,17 +66,12 @@
             // 
             // cpuHeader
             // 
-            this.cpuHeader.Text = "CPU Load (in %)";
+            this.cpuHeader.Text = "CPU Load (In %)";
             this.cpuHeader.Width = 125;
-            // 
-            // tempColumn
-            // 
-            this.tempColumn.Text = "CPU Temperature";
-            this.tempColumn.Width = 148;
             // 
             // memHeader
             // 
-            this.memHeader.Text = "Memory Left (in MB)";
+            this.memHeader.Text = "Memory Left (In MB)";
             this.memHeader.Width = 167;
             // 
             // label1
@@ -117,11 +114,27 @@
             this.writeToLogFile.UseVisualStyleBackColor = true;
             this.writeToLogFile.Click += new System.EventHandler(this.writeToLogFile_Click);
             // 
+            // CPUTemp
+            // 
+            this.CPUTemp.Text = "CPU Tempeture";
+            this.CPUTemp.Width = 102;
+            // 
+            // Specs_Button
+            // 
+            this.Specs_Button.Location = new System.Drawing.Point(12, 418);
+            this.Specs_Button.Name = "Specs_Button";
+            this.Specs_Button.Size = new System.Drawing.Size(91, 45);
+            this.Specs_Button.TabIndex = 6;
+            this.Specs_Button.Text = "System Specs";
+            this.Specs_Button.UseVisualStyleBackColor = true;
+            this.Specs_Button.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(795, 493);
+            this.Controls.Add(this.Specs_Button);
             this.Controls.Add(this.writeToLogFile);
             this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.uptimeTextBox);
@@ -148,7 +161,8 @@
         private System.Windows.Forms.TextBox uptimeTextBox;
         private System.Windows.Forms.Button pauseButton;
         private System.Windows.Forms.Button writeToLogFile;
-        private System.Windows.Forms.ColumnHeader tempColumn;
+        private System.Windows.Forms.ColumnHeader CPUTemp;
+        private System.Windows.Forms.Button Specs_Button;
     }
 }
 
