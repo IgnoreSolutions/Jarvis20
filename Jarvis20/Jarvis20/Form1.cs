@@ -10,6 +10,7 @@ using System.Speech.Synthesis;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
+using System.Management;
 
 namespace Jarvis20
 {
@@ -48,7 +49,7 @@ namespace Jarvis20
             {
                 if (!paused)
                 {
-                    Temperature temp = new Temperature();
+                    //Temperature temp = new Temperature();
                     
                     ListViewItem lvi = new ListViewItem();
                     string currentDateTime = DateTime.Now.ToString();
@@ -56,7 +57,7 @@ namespace Jarvis20
                     int curMemAvail = (int)perfMemCount.NextValue();
                     lvi.Text = currentDateTime;
                     lvi.SubItems.Add(String.Format("{0}%", curCpuPercentage.ToString()));
-                    lvi.SubItems.Add(String.Format("{0}C", temp.CurrentValue));
+                    //lvi.SubItems.Add(String.Format("{0}C", temp.CurrentValue));
                     lvi.SubItems.Add(String.Format("{0} MB", curMemAvail.ToString()));
                     listView1.Items.Add(lvi);
                     //This will show the textbox, how long the system has been up.
@@ -202,17 +203,32 @@ namespace Jarvis20
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void optionsMenu()
+        private void button1_Click(object sender, EventArgs e)
         {
+            string proc = GetComponet("Win32_Processor", "Name");
+            string videoCard = GetComponet("Win32_VideoController", "Name");
+            string moboIdent = GetComponet("Win32_BaseBoard", "Product");
 
-
+            MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nMotherboard Identifier: {2}", proc, videoCard, moboIdent),
+                "Processor Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private static string GetComponet(string hwclass, string syntax)
+        {
+            ManagementObjectSearcher mos = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM " + hwclass);
+            foreach (ManagementObject mj in mos.Get())
+            {
+                //Console.WriteLine(Convert.ToString(mj[syntax]));
+                return mj[syntax].ToString();
+            }
+            return null;
+        }
         //
     }
 }
