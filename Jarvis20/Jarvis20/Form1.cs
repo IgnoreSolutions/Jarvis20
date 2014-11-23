@@ -69,12 +69,12 @@ namespace Jarvis20
                     {
                         if (curCpuPercentage == 100)
                         {
-                            string cpuLoadVocalMessage = String.Format("WARNING: Your CPU is at 100% Stop your killing me!", curCpuPercentage);
+                            string cpuLoadVocalMessage = String.Format("WARNING: Your CPU is at 100%", curCpuPercentage);
                             Speak(cpuLoadVocalMessage, VoiceGender.Male, 1);
                         }
                         else
                         {
-                            string cpuLoadVocalMessage = String.Format("WARNING: CPU Usage 80% or higher!", curCpuPercentage);
+                            string cpuLoadVocalMessage = String.Format("WARNING: CPU Usage is at 80% or higher!", curCpuPercentage);
                             Speak(cpuLoadVocalMessage, VoiceGender.Male, 3);
                         }
                     }
@@ -175,6 +175,8 @@ namespace Jarvis20
             }
         }
 
+        
+        // Log file Commands
         private void WriteToLogFile(string fileToSave)
         {
             StreamWriter sw = new StreamWriter(fileToSave);
@@ -194,8 +196,20 @@ namespace Jarvis20
                 MessageBox.Show("Error while writing to file:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             sw.Flush();
-            
+
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void optionsMenu()
+        {
+
+
+        }
+
         //
     }
 }
