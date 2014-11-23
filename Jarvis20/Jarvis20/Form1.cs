@@ -120,7 +120,7 @@ namespace Jarvis20
 
         private void pauseButton_Click(object sender, EventArgs e)
         {
-            if(paused) //paused, so we need to unpause it
+            if(paused) //paused, so we need to unpause it!
             {
                 paused = false;
                 pauseButton.Text = "Pause Jarvis";
