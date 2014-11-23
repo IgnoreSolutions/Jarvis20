@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.listView1 = new System.Windows.Forms.ListView();
             this.timeHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cpuHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -36,6 +37,7 @@
             this.uptimeTextBox = new System.Windows.Forms.TextBox();
             this.pauseButton = new System.Windows.Forms.Button();
             this.writeToLogFile = new System.Windows.Forms.Button();
+            this.optionsMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -73,16 +75,17 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(739, 446);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label1.Location = new System.Drawing.Point(12, 349);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.Size = new System.Drawing.Size(64, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "UpTime";
             // 
             // uptimeTextBox
             // 
             this.uptimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.uptimeTextBox.Location = new System.Drawing.Point(642, 462);
+            this.uptimeTextBox.Location = new System.Drawing.Point(12, 372);
             this.uptimeTextBox.Name = "uptimeTextBox";
             this.uptimeTextBox.ReadOnly = true;
             this.uptimeTextBox.Size = new System.Drawing.Size(141, 20);
@@ -90,7 +93,7 @@
             // 
             // pauseButton
             // 
-            this.pauseButton.Location = new System.Drawing.Point(692, 398);
+            this.pauseButton.Location = new System.Drawing.Point(692, 418);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(91, 45);
             this.pauseButton.TabIndex = 4;
@@ -108,18 +111,30 @@
             this.writeToLogFile.UseVisualStyleBackColor = true;
             this.writeToLogFile.Click += new System.EventHandler(this.writeToLogFile_Click);
             // 
+            // optionsMenu
+            // 
+            this.optionsMenu.Location = new System.Drawing.Point(15, 418);
+            this.optionsMenu.Name = "optionsMenu";
+            this.optionsMenu.Size = new System.Drawing.Size(91, 45);
+            this.optionsMenu.TabIndex = 8;
+            this.optionsMenu.Text = "Options";
+            this.optionsMenu.UseVisualStyleBackColor = true;
+            this.optionsMenu.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(795, 493);
+            this.Controls.Add(this.optionsMenu);
             this.Controls.Add(this.writeToLogFile);
             this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.uptimeTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Jarvis Beta Build v1.35";
+            this.Text = "Jarvis Beta Build v2.35";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -138,6 +153,7 @@
         private System.Windows.Forms.TextBox uptimeTextBox;
         private System.Windows.Forms.Button pauseButton;
         private System.Windows.Forms.Button writeToLogFile;
+        private System.Windows.Forms.Button optionsMenu;
     }
 }
 
