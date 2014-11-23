@@ -32,12 +32,12 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.timeHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cpuHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tempColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.memHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.uptimeTextBox = new System.Windows.Forms.TextBox();
             this.pauseButton = new System.Windows.Forms.Button();
             this.writeToLogFile = new System.Windows.Forms.Button();
-            this.optionsMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -48,6 +48,7 @@
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.timeHeader,
             this.cpuHeader,
+            this.tempColumn,
             this.memHeader});
             this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.Name = "listView1";
@@ -65,6 +66,11 @@
             // 
             this.cpuHeader.Text = "CPU Load (in %)";
             this.cpuHeader.Width = 125;
+            // 
+            // tempColumn
+            // 
+            this.tempColumn.Text = "CPU Temperature";
+            this.tempColumn.Width = 148;
             // 
             // memHeader
             // 
@@ -111,22 +117,11 @@
             this.writeToLogFile.UseVisualStyleBackColor = true;
             this.writeToLogFile.Click += new System.EventHandler(this.writeToLogFile_Click);
             // 
-            // optionsMenu
-            // 
-            this.optionsMenu.Location = new System.Drawing.Point(15, 418);
-            this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(91, 45);
-            this.optionsMenu.TabIndex = 8;
-            this.optionsMenu.Text = "Options";
-            this.optionsMenu.UseVisualStyleBackColor = true;
-            this.optionsMenu.Click += new System.EventHandler(this.button2_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(795, 493);
-            this.Controls.Add(this.optionsMenu);
             this.Controls.Add(this.writeToLogFile);
             this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.uptimeTextBox);
@@ -153,7 +148,7 @@
         private System.Windows.Forms.TextBox uptimeTextBox;
         private System.Windows.Forms.Button pauseButton;
         private System.Windows.Forms.Button writeToLogFile;
-        private System.Windows.Forms.Button optionsMenu;
+        private System.Windows.Forms.ColumnHeader tempColumn;
     }
 }
 

@@ -41,19 +41,22 @@ namespace Jarvis20
             Thread thrd = new Thread(loop);
             thrd.Start();
         }
-
+       
         private void loop()
         {
             while(true)
             {
                 if (!paused)
                 {
+                    Temperature temp = new Temperature();
+                    
                     ListViewItem lvi = new ListViewItem();
                     string currentDateTime = DateTime.Now.ToString();
                     int curCpuPercentage = (int)perfCpuCount.NextValue();
                     int curMemAvail = (int)perfMemCount.NextValue();
                     lvi.Text = currentDateTime;
                     lvi.SubItems.Add(String.Format("{0}%", curCpuPercentage.ToString()));
+                    lvi.SubItems.Add(String.Format("{0}C", temp.CurrentValue));
                     lvi.SubItems.Add(String.Format("{0} MB", curMemAvail.ToString()));
                     listView1.Items.Add(lvi);
                     //This will show the textbox, how long the system has been up.
