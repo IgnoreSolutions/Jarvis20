@@ -38,6 +38,7 @@
             this.pauseButton = new System.Windows.Forms.Button();
             this.writeToLogFile = new System.Windows.Forms.Button();
             this.Specs_Button = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -124,11 +125,22 @@
             this.Specs_Button.UseVisualStyleBackColor = true;
             this.Specs_Button.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(109, 316);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(438, 45);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "About";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 367);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Specs_Button);
             this.Controls.Add(this.writeToLogFile);
             this.Controls.Add(this.pauseButton);
@@ -157,6 +169,7 @@
         private System.Windows.Forms.Button pauseButton;
         private System.Windows.Forms.Button writeToLogFile;
         private System.Windows.Forms.Button Specs_Button;
+        private System.Windows.Forms.Button button1;
     }
 }
 
