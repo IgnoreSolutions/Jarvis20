@@ -218,7 +218,7 @@ namespace Jarvis20
             string network = GetComponet("Win32_NetworkAdapter", "Name");
             string cdRom = GetComponet("Win32_CDROMDrive", "Name");
 
-            MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nSound Card: {2}\nOn Board Graphics: {3}\nMonitor: {4}\nNetwork Adapter: {5}\nCD Rom: {6}",
+            MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nSound Card: {2}\nMother Board: {3}\nMonitor: {4}\nNetwork Adapter: {5}\nCD Rom: {6}",
             proc, videoCard, soundCard, moboIdent, deskMonitor, network, cdRom),
                 "System Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
