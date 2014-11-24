@@ -37,9 +37,7 @@
             this.uptimeTextBox = new System.Windows.Forms.TextBox();
             this.pauseButton = new System.Windows.Forms.Button();
             this.writeToLogFile = new System.Windows.Forms.Button();
-            this.CPUTemp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Specs_Button = new System.Windows.Forms.Button();
-            this.GpuTemp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listView1
@@ -50,38 +48,35 @@
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.timeHeader,
             this.cpuHeader,
-            this.memHeader,
-            this.CPUTemp,
-            this.GpuTemp});
-            this.listView1.Location = new System.Drawing.Point(16, 12);
+            this.memHeader});
+            this.listView1.Location = new System.Drawing.Point(14, 15);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(771, 331);
+            this.listView1.Size = new System.Drawing.Size(632, 205);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // timeHeader
             // 
             this.timeHeader.Text = "Time";
-            this.timeHeader.Width = 139;
+            this.timeHeader.Width = 128;
             // 
             // cpuHeader
             // 
             this.cpuHeader.Text = "CPU Load (In %)";
-            this.cpuHeader.Width = 125;
+            this.cpuHeader.Width = 273;
             // 
             // memHeader
             // 
             this.memHeader.Text = "Memory Left (In MB)";
-            this.memHeader.Width = 167;
+            this.memHeader.Width = 225;
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(12, 349);
+            this.label1.Location = new System.Drawing.Point(12, 247);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 20);
             this.label1.TabIndex = 1;
@@ -89,8 +84,8 @@
             // 
             // uptimeTextBox
             // 
-            this.uptimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.uptimeTextBox.Location = new System.Drawing.Point(12, 372);
+            this.uptimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.uptimeTextBox.Location = new System.Drawing.Point(12, 270);
             this.uptimeTextBox.Name = "uptimeTextBox";
             this.uptimeTextBox.ReadOnly = true;
             this.uptimeTextBox.Size = new System.Drawing.Size(141, 20);
@@ -98,7 +93,8 @@
             // 
             // pauseButton
             // 
-            this.pauseButton.Location = new System.Drawing.Point(692, 418);
+            this.pauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pauseButton.Location = new System.Drawing.Point(553, 316);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(91, 45);
             this.pauseButton.TabIndex = 4;
@@ -108,7 +104,8 @@
             // 
             // writeToLogFile
             // 
-            this.writeToLogFile.Location = new System.Drawing.Point(692, 349);
+            this.writeToLogFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.writeToLogFile.Location = new System.Drawing.Point(553, 247);
             this.writeToLogFile.Name = "writeToLogFile";
             this.writeToLogFile.Size = new System.Drawing.Size(91, 43);
             this.writeToLogFile.TabIndex = 5;
@@ -116,14 +113,10 @@
             this.writeToLogFile.UseVisualStyleBackColor = true;
             this.writeToLogFile.Click += new System.EventHandler(this.writeToLogFile_Click);
             // 
-            // CPUTemp
-            // 
-            this.CPUTemp.Text = "CPU Tempeture";
-            this.CPUTemp.Width = 102;
-            // 
             // Specs_Button
             // 
-            this.Specs_Button.Location = new System.Drawing.Point(12, 418);
+            this.Specs_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Specs_Button.Location = new System.Drawing.Point(12, 316);
             this.Specs_Button.Name = "Specs_Button";
             this.Specs_Button.Size = new System.Drawing.Size(91, 45);
             this.Specs_Button.TabIndex = 6;
@@ -131,16 +124,11 @@
             this.Specs_Button.UseVisualStyleBackColor = true;
             this.Specs_Button.Click += new System.EventHandler(this.button1_Click);
             // 
-            // GpuTemp
-            // 
-            this.GpuTemp.Text = "GPU Tempeture";
-            this.GpuTemp.Width = 103;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 493);
+            this.ClientSize = new System.Drawing.Size(656, 367);
             this.Controls.Add(this.Specs_Button);
             this.Controls.Add(this.writeToLogFile);
             this.Controls.Add(this.pauseButton);
@@ -148,10 +136,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(672, 406);
             this.Name = "Form1";
             this.Text = "Jarvis Beta Build v2.45";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -168,9 +156,7 @@
         private System.Windows.Forms.TextBox uptimeTextBox;
         private System.Windows.Forms.Button pauseButton;
         private System.Windows.Forms.Button writeToLogFile;
-        private System.Windows.Forms.ColumnHeader CPUTemp;
         private System.Windows.Forms.Button Specs_Button;
-        private System.Windows.Forms.ColumnHeader GpuTemp;
     }
 }
 
