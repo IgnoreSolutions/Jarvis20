@@ -56,8 +56,10 @@ namespace Jarvis20
                     int curMemAvail = (int)perfMemCount.NextValue();
                     lvi.Text = currentDateTime;
                     lvi.SubItems.Add(String.Format("{0}%", curCpuPercentage.ToString()));
-                    //lvi.SubItems.Add(String.Format("{0}C", temp.CurrentValue));
                     lvi.SubItems.Add(String.Format("{0} MB", curMemAvail.ToString()));
+                    //lvi.SubItems.Add(GetCpuTemp().ToString()) CPU Temp
+                    //lvi.SubItems.Add(); // GPU Temp
+
                     listView1.Items.Add(lvi);
                     //This will show the textbox, how long the system has been up.
                     TimeSpan uptimeSpan = TimeSpan.FromSeconds(perfUptimeCount.NextValue());
@@ -147,11 +149,6 @@ namespace Jarvis20
             }
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);
@@ -202,12 +199,6 @@ namespace Jarvis20
 
         }
 
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         // This tells the computer to look for HardWare Specs
         private void button1_Click(object sender, EventArgs e)
         {
@@ -216,13 +207,20 @@ namespace Jarvis20
             string moboIdent = GetComponet("Win32_BaseBoard", "Product");
             string soundIdent = GetComponet("Win32_SoundDevice", "Name");
 
-            MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nMotherboard Identifier: {2}\nSound Card: ", 
+            MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nMotherboard: {2}\nSound Card: ", 
             proc, videoCard, moboIdent, soundIdent),
                 "System Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hwclass"></param>
+        /// <param name="syntax"></param>
+        /// <returns></returns>
         private static string GetComponet(string hwclass, string syntax)
         {
+            
             ManagementObjectSearcher mos = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM " + hwclass);
             foreach (ManagementObject mj in mos.Get())
             {
@@ -231,6 +229,7 @@ namespace Jarvis20
             }
             return null;
         }
+
         //
     }
 }
