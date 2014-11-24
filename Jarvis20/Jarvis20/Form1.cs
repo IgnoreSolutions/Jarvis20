@@ -36,7 +36,7 @@ namespace Jarvis20
         private void Form1_Load(object sender, EventArgs e)
         {
             Control.CheckForIllegalCrossThreadCalls = false;
-            synth.Speak("Welcome to Jarvis version two point six five, beta build");
+            synth.Speak("Welcome to Jarvis version two point seven five, beta build");
             GetCurrentInformation();
             Thread thrd = new Thread(loop);
             thrd.Start();
@@ -204,11 +204,15 @@ namespace Jarvis20
         {
             string proc = GetComponet("Win32_Processor", "Name");
             string videoCard = GetComponet("Win32_VideoController", "Name");
-            string ramIdent = GetComponet("Win32_PhysicalMemory", "Status");
+            string soundCard = GetComponet("Win32_SoundDevice", "Caption");
             string moboIdent = GetComponet("Win32_BaseBoard", "Product");
-            
-            MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nOn Ram: {2}\nOn Board Graphics: {3}", 
-            proc, videoCard, ramIdent, moboIdent),
+            string deskMonitor = GetComponet("Win32_DesktopMonitor", "Name");
+            string network = GetComponet("Win32_NetworkAdapter", "Name");
+            string cdRom = GetComponet("Win32_CDROMDrive", "Name");
+
+
+            MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nSound Card: {2}\nOn Board Graphics: {3}\nMonitor: {4}\nNetwork Adapter: {5}\nCD Rom: {6}",
+            proc, videoCard, soundCard, moboIdent, deskMonitor, network, cdRom ),
                 "System Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -234,7 +238,7 @@ namespace Jarvis20
         {
             if (MessageBox.Show("Jarvis is a monitoring Program. He tells you your CPU Load, and how much Memory you have left. He also tells you when your CPU Load has reached 80% or Higher! Whenever you reach the maxium state of 100% CPU Load, he also notifys you letting you know that your CPU is at 100% load. Thanks for using Jarvis!  (:", "About Jarvis",
                 MessageBoxButtons.OK, MessageBoxIcon.Question)
-                == DialogResult.Yes);
+                == DialogResult.OK);
         }
 
         //
