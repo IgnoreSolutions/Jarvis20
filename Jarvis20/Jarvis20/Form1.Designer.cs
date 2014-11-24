@@ -38,6 +38,7 @@
             this.pauseButton = new System.Windows.Forms.Button();
             this.writeToLogFile = new System.Windows.Forms.Button();
             this.Specs_Button = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -59,7 +60,7 @@
             // timeHeader
             // 
             this.timeHeader.Text = "Time";
-            this.timeHeader.Width = 128;
+            this.timeHeader.Width = 127;
             // 
             // cpuHeader
             // 
@@ -116,7 +117,7 @@
             // Specs_Button
             // 
             this.Specs_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Specs_Button.Location = new System.Drawing.Point(12, 316);
+            this.Specs_Button.Location = new System.Drawing.Point(14, 316);
             this.Specs_Button.Name = "Specs_Button";
             this.Specs_Button.Size = new System.Drawing.Size(91, 45);
             this.Specs_Button.TabIndex = 6;
@@ -124,11 +125,22 @@
             this.Specs_Button.UseVisualStyleBackColor = true;
             this.Specs_Button.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(279, 316);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(93, 45);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "About";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 367);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Specs_Button);
             this.Controls.Add(this.writeToLogFile);
             this.Controls.Add(this.pauseButton);
@@ -138,7 +150,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(672, 406);
             this.Name = "Form1";
-            this.Text = "Jarvis Beta Build v2.45";
+            this.Text = "Jarvis Beta Build v2.75";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -157,6 +169,7 @@
         private System.Windows.Forms.Button pauseButton;
         private System.Windows.Forms.Button writeToLogFile;
         private System.Windows.Forms.Button Specs_Button;
+        private System.Windows.Forms.Button button1;
     }
 }
 

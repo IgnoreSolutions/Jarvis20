@@ -36,7 +36,7 @@ namespace Jarvis20
         private void Form1_Load(object sender, EventArgs e)
         {
             Control.CheckForIllegalCrossThreadCalls = false;
-            synth.Speak("Welcome to Jarvis version two point four five, beta build");
+            synth.Speak("Welcome to Jarvis version two point seven five, beta build");
             GetCurrentInformation();
             Thread thrd = new Thread(loop);
             thrd.Start();
@@ -204,11 +204,14 @@ namespace Jarvis20
         {
             string proc = GetComponet("Win32_Processor", "Name");
             string videoCard = GetComponet("Win32_VideoController", "Name");
+            string soundCard = GetComponet("Win32_SoundDevice", "Caption");
             string moboIdent = GetComponet("Win32_BaseBoard", "Product");
-            string soundIdent = GetComponet("Win32_SoundDevice", "Name");
+            string deskMonitor = GetComponet("Win32_DesktopMonitor", "Name");
+            string network = GetComponet("Win32_NetworkAdapter", "Name");
+            string cdRom = GetComponet("Win32_CDROMDrive", "Name");
 
-            MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nMotherboard: {2}\nSound Card: ", 
-            proc, videoCard, moboIdent, soundIdent),
+            MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nSound Card: {2}\nOn Board Graphics: {3}\nMonitor: {4}\nNetwork Adapter: {5}\nCD Rom: {6}",
+            proc, videoCard, soundCard, moboIdent, deskMonitor, network, cdRom),
                 "System Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -228,6 +231,13 @@ namespace Jarvis20
                 return mj[syntax].ToString();
             }
             return null;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Jarvis is a monitoring Program, he tells you your CPU Load, and how much Memory you have left. He will tell you when your CPU Load has reached 80% or Higher, and whenever you reach the maxium state of 100% CPU Load, he also notifys you. Thanks for using Jarvis!  (: Made by: Zachary Lees, Mike Santiago", "About Jarvis",
+                MessageBoxButtons.OK, MessageBoxIcon.Question)
+                == DialogResult.OK);
         }
 
         //
