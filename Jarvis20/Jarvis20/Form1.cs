@@ -205,10 +205,8 @@ namespace Jarvis20
             string proc = GetComponet("Win32_Processor", "Name");
             string videoCard = GetComponet("Win32_VideoController", "Name");
             string moboIdent = GetComponet("Win32_BaseBoard", "Product");
-            string soundIdent = GetComponet("Win32_SoundDevice", "Name");
-
-            MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nMotherboard: {2}\nSound Card: ", 
-            proc, videoCard, moboIdent, soundIdent),
+            MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nMotherboard: {2}\nBIOS: {3}", 
+            proc, videoCard, moboIdent),
                 "System Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
