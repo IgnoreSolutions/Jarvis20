@@ -236,7 +236,7 @@ namespace Jarvis20
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Jarvis is a monitoring Program. He tells you your CPU Load, and how much Memory you have left. He also tells you when your CPU Load has reached 80% or Higher! Whenever you reach the maxium state of 100% CPU Load, he also notifys you letting you know that your CPU is at 100% load. Thanks for using Jarvis!  (:", "About Jarvis",
+            if (MessageBox.Show("Jarvis is a monitoring Program, he tells you your CPU Load, and how much Memory you have left. He will tell you when your CPU Load has reached 80% or Higher, and whenever you reach the maxium state of 100% CPU Load, he also notifys you. Thanks for using Jarvis!  (: Made by: Zachary Lees, Mike Santiago", "About Jarvis",
                 MessageBoxButtons.OK, MessageBoxIcon.Question)
                 == DialogResult.OK);
         }
