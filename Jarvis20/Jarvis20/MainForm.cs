@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using System.Management;
+using System.Reflection;
 
 namespace Jarvis20
 {
@@ -31,6 +32,10 @@ namespace Jarvis20
             perfUptimeCount.NextValue(); //
             perfCpuCount.NextValue();    // Pulls the initial values first, for accuracy
             perfMemCount.NextValue();    //
+            //
+            Version ver = Assembly.GetEntryAssembly().GetName().Version; //The executable stores a version too, this retrieves it. This is much more accurate
+            this.Text = string.Format("Jarvis {0}.{1} Beta Build", ver.Major, ver.Minor); //Changes the window's title text to the current version number.
+            
         }
 
         // This is the opening Text to speak, and quotes represent what he will say.
@@ -230,7 +235,6 @@ namespace Jarvis20
             ManagementObjectSearcher mos = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM " + hwclass);
             foreach (ManagementObject mj in mos.Get())
             {
-                //Console.WriteLine(Convert.ToString(mj[syntax]));
                 return mj[syntax].ToString();
             }
             return null;
@@ -238,9 +242,8 @@ namespace Jarvis20
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Jarvis is a monitoring Program, he tells you your CPU Load, and how much Memory you have left. He will tell you when your CPU Load has reached 80% or Higher, and whenever you reach the maxium state of 100% CPU Load, he also notifys you. Thanks for using Jarvis!  (: Made by: Zachary Lees, Mike Santiago", "About Jarvis",
-                MessageBoxButtons.OK, MessageBoxIcon.Question)
-                == DialogResult.OK);
+            AboutForm af = new AboutForm(); //Declares the AboutForm variable
+            af.ShowDialog();              //Shows it as a dialog, meaning the user won't be able to interact with the elements below until this dialog is closed
         }
 
         //
