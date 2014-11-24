@@ -40,22 +40,22 @@ namespace Jarvis20
             switch(res)
             {
                 case(0):
-                    whatToSay = "I came here to kick ass and chew bubble gum, and I'm all out of bubble gum.";
+                    whatToSay = "I came here to kick ass and chew bubble gum, and I'm all out of bubble gum";
                     break;
                 case(1):
-                    whatToSay = "I've got balls of steel!";
+                    whatToSay = "I've got balls of steel";
                     break;
                 case(2):
-                    whatToSay = "Hail to the king, baby!";
+                    whatToSay = "Hail to the king, baby";
                     break;
                 case(3):
                     whatToSay = "My boot, your face: the perfect couple";
                     break;
                 case(4):
-                    whatToSay = "I'm an equal opportunity ass kicker!";
+                    whatToSay = "I'm an equal opportunity ass kicker";
                     break;
                 case(5):
-                    whatToSay = "You're an inspiration for birth control.";
+                    whatToSay = "You're an inspiration for birth control";
                     break;
                 case(6):
                     whatToSay = "Your ass is grass, and I've got the weed whacker";

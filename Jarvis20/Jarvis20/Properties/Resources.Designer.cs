@@ -63,6 +63,26 @@ namespace Jarvis20.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap amd_logo {
+            get {
+                object obj = ResourceManager.GetObject("amd_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap amd_radeon_logo {
+            get {
+                object obj = ResourceManager.GetObject("amd_radeon_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BetterIcon {
             get {
                 object obj = ResourceManager.GetObject("BetterIcon", resourceCulture);
@@ -86,6 +106,26 @@ namespace Jarvis20.Properties {
         internal static System.Drawing.Bitmap Icon_128 {
             get {
                 object obj = ResourceManager.GetObject("Icon_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap intel_logo {
+            get {
+                object obj = ResourceManager.GetObject("intel_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nvidia_logo {
+            get {
+                object obj = ResourceManager.GetObject("nvidia_logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
