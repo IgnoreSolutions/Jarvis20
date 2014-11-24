@@ -14,22 +14,23 @@ using System.Management;
 
 namespace Jarvis20
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        SpeechSynthesizer synth = new SpeechSynthesizer();
-        PerformanceCounter perfCpuCount = new PerformanceCounter("Processor Information", "% Processor Time", "_Total");
-        PerformanceCounter perfMemCount = new PerformanceCounter("Memory", "Available MBytes");
-        PerformanceCounter perfUptimeCount = new PerformanceCounter("System", "System Up Time");
-        bool paused = false;
+        //Intiial variable declarations
+        SpeechSynthesizer synth = new SpeechSynthesizer(); //This speaks
+        PerformanceCounter perfCpuCount = new PerformanceCounter("Processor Information", "% Processor Time", "_Total"); //This monitors CPU load
+        PerformanceCounter perfMemCount = new PerformanceCounter("Memory", "Available MBytes"); //This monitors available memory
+        PerformanceCounter perfUptimeCount = new PerformanceCounter("System", "System Up Time"); //This monitors system up time
+        bool paused = false; //Whether or not Jarvis is paused
 
 
-        public Form1()
+        public MainForm()
         {
-            Font = SystemFonts.MessageBoxFont;
-            InitializeComponent();
-            perfUptimeCount.NextValue();
-            perfCpuCount.NextValue();
-            perfMemCount.NextValue();
+            Font = SystemFonts.MessageBoxFont; //Sets the form's font to the system's default font
+            InitializeComponent(); //Shows the form, and its components
+            perfUptimeCount.NextValue(); //
+            perfCpuCount.NextValue();    // Pulls the initial values first, for accuracy
+            perfMemCount.NextValue();    //
         }
 
         // This is the opening Text to speak, and quotes represent what he will say.
@@ -54,14 +55,11 @@ namespace Jarvis20
                     string currentDateTime = DateTime.Now.ToString();
                     int curCpuPercentage = (int)perfCpuCount.NextValue();
                     int curMemAvail = (int)perfMemCount.NextValue();
-                    lvi.Text = currentDateTime;
-                    lvi.SubItems.Add(String.Format("{0}%", curCpuPercentage.ToString()));
-                    lvi.SubItems.Add(String.Format("{0} MB", curMemAvail.ToString()));
-                    //lvi.SubItems.Add(GetCpuTemp().ToString()) CPU Temp
-                    //lvi.SubItems.Add(); // GPU Temp
-
-                    listView1.Items.Add(lvi);
-                    //This will show the textbox, how long the system has been up.
+                    lvi.Text = currentDateTime; //.Text is the property indicating the first column
+                    lvi.SubItems.Add(String.Format("{0}%", curCpuPercentage.ToString())); //All 'SubItems.Add's following will correspond to the next rows. This is second row
+                    lvi.SubItems.Add(String.Format("{0} MB", curMemAvail.ToString())); //Third row
+                    listView1.Items.Add(lvi); //Adds the ListViewItem to the ListView
+                    //This will set the TextBox's text to however long the system's been up
                     TimeSpan uptimeSpan = TimeSpan.FromSeconds(perfUptimeCount.NextValue());
                     string systemUptimeMessage = string.Format("{0} hrs {1} mins {2} secs", (int)uptimeSpan.Hours, (int)uptimeSpan.Minutes, (int)uptimeSpan.Seconds);
                     uptimeTextBox.Text = systemUptimeMessage;
@@ -106,6 +104,9 @@ namespace Jarvis20
             synth.Speak(message);
         }
 
+        /// <summary>
+        /// The first bit of information being called in.
+        /// </summary>
         private void GetCurrentInformation()
         {
             //Item: Time, Subitem 1: Cpu Subitem 2: Mem
@@ -151,26 +152,28 @@ namespace Jarvis20
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Environment.Exit(0);
+            Environment.Exit(0); //Exit the program, '0' is the return code used by the OS to indicate no errors
         }
 
         private void writeToLogFile_Click(object sender, EventArgs e)
         {
+            //Declares the safe file dialog variable, gives it a title, and sets the filter (files to be shown)
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Title = "Save log as...";
             sfd.Filter = "Text File (*.txt)|*.txt|All Files (*.*)|*.*";
-            DialogResult dr = sfd.ShowDialog();
+            DialogResult dr = sfd.ShowDialog(); //The user's choice stored into a variable
             switch(dr)
             {
+                    //If they choose OK
                 case(DialogResult.OK):
                     WriteToLogFile(sfd.FileName);
                     MessageBox.Show(String.Format("File written to {0} successfully!", sfd.FileName), 
                         "Information", 
                         MessageBoxButtons.OK, 
-                        MessageBoxIcon.Information);
+                        MessageBoxIcon.Information); //Show a confirmation
                     break;
                 case(DialogResult.Cancel):
-
+                    //If they chose cancel, do nothing then
                     break;
             }
         }
