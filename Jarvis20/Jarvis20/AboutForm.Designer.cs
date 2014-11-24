@@ -46,6 +46,7 @@
             this.iconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.iconPictureBox.TabIndex = 0;
             this.iconPictureBox.TabStop = false;
+            this.iconPictureBox.Click += new System.EventHandler(this.iconPictureBox_Click);
             // 
             // titleLabel
             // 

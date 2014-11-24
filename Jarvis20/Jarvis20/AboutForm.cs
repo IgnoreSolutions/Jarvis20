@@ -7,6 +7,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using System.Speech;
+using System.Speech.Synthesis;
 
 namespace Jarvis20
 {
@@ -26,6 +28,40 @@ namespace Jarvis20
         private void okButton_Click(object sender, EventArgs e)
         {
             this.Close(); //closes the form when the ok button is clicked
+        }
+
+        private void iconPictureBox_Click(object sender, EventArgs e)
+        {
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+            Random r = new Random();
+            r.Next(6);
+            int res = r.Next(6);
+            string whatToSay = "";
+            switch(res)
+            {
+                case(0):
+                    whatToSay = "I came here to kick ass and chew bubble gum, and I'm all out of bubble gum.";
+                    break;
+                case(1):
+                    whatToSay = "I've got balls of steel!";
+                    break;
+                case(2):
+                    whatToSay = "Hail to the king, baby!";
+                    break;
+                case(3):
+                    whatToSay = "My boot, your face: the perfect couple";
+                    break;
+                case(4):
+                    whatToSay = "I'm an equal opportunity ass kicker!";
+                    break;
+                case(5):
+                    whatToSay = "You're an inspiration for birth control.";
+                    break;
+                case(6):
+                    whatToSay = "Your ass is grass, and I've got the weed whacker";
+                    break;
+            }
+            synth.Speak(whatToSay);
         }
     }
 }

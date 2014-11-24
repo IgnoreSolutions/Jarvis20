@@ -42,7 +42,8 @@ namespace Jarvis20
         private void Form1_Load(object sender, EventArgs e)
         {
             Control.CheckForIllegalCrossThreadCalls = false;
-            synth.Speak("Welcome to Jarvis version two point seven five, beta build");
+            Version ver = Assembly.GetEntryAssembly().GetName().Version;
+            synth.Speak(String.Format("Welcome to Jarvis version {0} point {1}, beta build", ver.Major, ver.Minor));
             GetCurrentInformation();
             Thread thrd = new Thread(loop);
             thrd.Start();
