@@ -211,17 +211,6 @@ namespace Jarvis20
         // This tells the computer to look for HardWare Specs
         private void button1_Click(object sender, EventArgs e)
         {
-            /*string proc = GetComponent("Win32_Processor", "Name");
-            string videoCard = GetComponent("Win32_VideoController", "Name");
-            string soundCard = GetComponent("Win32_SoundDevice", "Caption");
-            string moboIdent = GetComponent("Win32_BaseBoard", "Product");
-            string deskMonitor = GetComponent("Win32_DesktopMonitor", "Name");
-            string network = GetComponent("Win32_NetworkAdapter", "Name");
-            string cdRom = GetComponent("Win32_CDROMDrive", "Name");
-
-            MessageBox.Show(string.Format("Processor: {0}\nVideo Card: {1}\nSound Card: {2}\nMother Board: {3}\nMonitor: {4}\nNetwork Adapter: {5}\nCD Rom: {6}",
-            proc, videoCard, soundCard, moboIdent, deskMonitor, network, cdRom),
-                "System Information", MessageBoxButtons.OK, MessageBoxIcon.Information);*/
             SystemSpecs ss = new SystemSpecs();
             ss.ShowDialog();
         }
