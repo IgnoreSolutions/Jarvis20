@@ -13,6 +13,7 @@ namespace Jarvis20
     {
         public SystemSpecs()
         {
+            Font = SystemFonts.MessageBoxFont;
             InitializeComponent();
         }
 
@@ -36,6 +37,7 @@ namespace Jarvis20
             string arch = MainForm.GetComponent("Win32_Processor", "Architecture");
             string totalRam = MainForm.GetComponent("Win32_ComputerSystem", "TotalPhysicalMemory");
             string vidCard = MainForm.GetComponent("Win32_VideoController", "Name");
+            string vidCard_RAM = MainForm.GetComponent("Win32_VideoController", "AdapterRAM");
             string soundCard = MainForm.GetComponent("Win32_SoundDevice", "Caption");
             string moboIdent = MainForm.GetComponent("Win32_BaseBoard", "Product");
             string cdRom = MainForm.GetComponent("Win32_CDROMDrive", "Name");
@@ -45,12 +47,14 @@ namespace Jarvis20
             float totalRam_mb = (totalRam_b / 1024f) / 1024f;
             float maxClockSpeedMhz = float.Parse(clockSpeed);
             float maxClockSpeedGhz = maxClockSpeedMhz / 1000f;
+            float totalVidRam_b = float.Parse(vidCard_RAM);
+            float totalVidRam_mb = (totalVidRam_b / 1024f) / 1024f;
             string mb_gb = string.Format("{1} GB ({0} MB)", totalRam_mb, Math.Round(totalRam_mb / 1024f, 2));
             //
             networkTextBox.Text = network;
             procTextBox.Text = string.Format("{0} @ {1}ghz; {2}-Bit", proc, maxClockSpeedGhz.ToString(), returnArchitecture(arch));
             ramTextBox.Text = mb_gb.ToString();
-            videoCardTextBox.Text = vidCard;
+            videoCardTextBox.Text = string.Format("{0} {1}GB ({2} MB)", vidCard, totalVidRam_mb / 1024f, totalVidRam_mb);
             soundCardTextBox.Text = soundCard;
             moboTextBox.Text = moboIdent;
             cdRomTextBox.Text = cdRom;
