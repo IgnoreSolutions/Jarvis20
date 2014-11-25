@@ -63,11 +63,11 @@ namespace Jarvis20
 
         private Bitmap detectCpuManufacturer(string toDetect)
         {
-            if(toDetect.Contains("AMD"))
+            if (toDetect.IndexOf("amd", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
             {
                 return Jarvis20.Properties.Resources.amd_logo;
             }
-            else if(toDetect.Contains("Intel"))
+            else if (toDetect.IndexOf("intel", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
             {
                 return Jarvis20.Properties.Resources.intel_logo;
             }
@@ -76,13 +76,17 @@ namespace Jarvis20
 
         private Bitmap detectGpuManufacturer(string toDetect)
         {
-            if(toDetect.Contains("Radeon"))
+            if(toDetect.IndexOf("radeon", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
             {
                 return Jarvis20.Properties.Resources.amd_radeon_logo;
             }
-            else if(toDetect.Contains("NVidia"))
+            else if (toDetect.IndexOf("nvidia", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
             {
                 return Jarvis20.Properties.Resources.nvidia_logo;
+            }
+            else if (toDetect.IndexOf("intel", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
+            {
+                return Jarvis20.Properties.Resources.intel_graphics;
             }
             return null;
         }

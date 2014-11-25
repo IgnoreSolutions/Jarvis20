@@ -212,7 +212,7 @@ namespace Jarvis20
         private void button1_Click(object sender, EventArgs e)
         {
             SystemSpecs ss = new SystemSpecs();
-            ss.ShowDialog();
+            ss.Show();
         }
 
         /// <summary>
