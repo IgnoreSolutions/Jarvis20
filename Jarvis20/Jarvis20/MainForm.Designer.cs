@@ -95,6 +95,7 @@
             // pauseButton
             // 
             this.pauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pauseButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.pauseButton.Location = new System.Drawing.Point(553, 316);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(91, 45);
@@ -106,6 +107,7 @@
             // writeToLogFile
             // 
             this.writeToLogFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.writeToLogFile.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.writeToLogFile.Location = new System.Drawing.Point(553, 247);
             this.writeToLogFile.Name = "writeToLogFile";
             this.writeToLogFile.Size = new System.Drawing.Size(91, 43);
@@ -117,6 +119,7 @@
             // Specs_Button
             // 
             this.Specs_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Specs_Button.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Specs_Button.Location = new System.Drawing.Point(14, 316);
             this.Specs_Button.Name = "Specs_Button";
             this.Specs_Button.Size = new System.Drawing.Size(91, 45);
@@ -128,6 +131,7 @@
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button1.Location = new System.Drawing.Point(279, 316);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(93, 45);
@@ -140,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 367);
+            this.ClientSize = new System.Drawing.Size(656, 368);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Specs_Button);
             this.Controls.Add(this.writeToLogFile);

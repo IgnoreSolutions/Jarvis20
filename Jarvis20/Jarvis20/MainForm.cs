@@ -35,7 +35,8 @@ namespace Jarvis20
             //
             Version ver = Assembly.GetEntryAssembly().GetName().Version; //The executable stores a version too, this retrieves it. This is much more accurate
             this.Text = string.Format("Jarvis {0}.{1} Beta Build", ver.Major, ver.Minor); //Changes the window's title text to the current version number.
-            
+            //
+            synth.SelectVoiceByHints(VoiceGender.Male);
         }
 
         // This is the opening Text to speak, and quotes represent what he will say.
@@ -211,7 +212,8 @@ namespace Jarvis20
         // This tells the computer to look for HardWare Specs
         private void button1_Click(object sender, EventArgs e)
         {
-            SystemSpecs ss = new SystemSpecs();
+            this.UseWaitCursor = true;
+            SystemSpecs ss = new SystemSpecs(this);
             ss.Show();
         }
 

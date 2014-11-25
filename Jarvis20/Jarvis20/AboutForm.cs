@@ -17,6 +17,7 @@ namespace Jarvis20
         public AboutForm()
         {
             InitializeComponent();
+
         }
 
         private void AboutForm_Load(object sender, EventArgs e)
@@ -33,6 +34,7 @@ namespace Jarvis20
         private void iconPictureBox_Click(object sender, EventArgs e)
         {
             SpeechSynthesizer synth = new SpeechSynthesizer();
+            synth.SelectVoiceByHints(VoiceGender.Male);
             Random r = new Random();
             r.Next(6);
             int res = r.Next(6);

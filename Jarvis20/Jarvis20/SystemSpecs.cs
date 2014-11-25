@@ -6,13 +6,23 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace Jarvis20
 {
     public partial class SystemSpecs : Form
     {
+        MainForm mf;
         public SystemSpecs()
         {
+            Font = SystemFonts.MessageBoxFont;
+            InitializeComponent();
+        }
+
+        public SystemSpecs(MainForm _mf)
+        {
+            mf = _mf;
+            
             Font = SystemFonts.MessageBoxFont;
             InitializeComponent();
         }
@@ -27,6 +37,8 @@ namespace Jarvis20
             //load in values
             networkTextBox.Focus();
             loadInValues();
+            if (mf != null)
+                mf.UseWaitCursor = false;
         }
 
         private void loadInValues()
@@ -42,6 +54,9 @@ namespace Jarvis20
             string moboIdent = MainForm.GetComponent("Win32_BaseBoard", "Product");
             string cdRom = MainForm.GetComponent("Win32_CDROMDrive", "Name");
             string monitor = MainForm.GetComponent("Win32_DesktopMonitor", "Name");
+            Microsoft.VisualBasic.Devices.ComputerInfo ci = new Microsoft.VisualBasic.Devices.ComputerInfo();
+            string osVersion = ci.OSFullName;
+            bool is64bit = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("PROCESSOR_ARCHITEW6432"));
             //
             float totalRam_b = float.Parse(totalRam);
             float totalRam_mb = (totalRam_b / 1024f) / 1024f;
@@ -59,6 +74,10 @@ namespace Jarvis20
             moboTextBox.Text = moboIdent;
             cdRomTextBox.Text = cdRom;
             monitorTextBox.Text = monitor;
+            if (Environment.Is64BitOperatingSystem)
+                osTextBox.Text = osVersion + " 64-Bit";
+            else 
+                osTextBox.Text = osVersion + " 32-Bit";
             //
             procPictureBox.Image = detectCpuManufacturer(proc);
             graphicsPictureBox.Image = detectGpuManufacturer(vidCard);
@@ -75,6 +94,10 @@ namespace Jarvis20
             {
                 return Jarvis20.Properties.Resources.intel_logo;
             }
+            else if(toDetect.IndexOf("pentium", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
+            {
+                return Jarvis20.Properties.Resources.intel_logo;
+            }
             return null;
         }
 
@@ -82,7 +105,14 @@ namespace Jarvis20
         {
             if(toDetect.IndexOf("radeon", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
             {
-                return Jarvis20.Properties.Resources.amd_radeon_logo;
+                if (toDetect.IndexOf("ati", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
+                {
+                    //return ATI Radeon logo
+                }
+                else
+                {
+                    return Jarvis20.Properties.Resources.amd_radeon_logo;
+                }
             }
             else if (toDetect.IndexOf("nvidia", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
             {
@@ -101,7 +131,7 @@ namespace Jarvis20
             switch(bit)
             {
                 case(9):
-                    return "AMD64";
+                    return "64";
                     break;
                 case(6):
                     return "IA64";

@@ -52,6 +52,8 @@
             this.procTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
+            this.osTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.graphicsPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.procPictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -96,6 +98,8 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.osTextBox);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.ramTextBox);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.cdRomTextBox);
@@ -114,7 +118,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(69, 214);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(443, 255);
+            this.groupBox1.Size = new System.Drawing.Size(443, 281);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "System Specifications";
@@ -274,7 +278,8 @@
             // okButton
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.Location = new System.Drawing.Point(417, 475);
+            this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.okButton.Location = new System.Drawing.Point(417, 501);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(95, 49);
             this.okButton.TabIndex = 6;
@@ -282,17 +287,37 @@
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.button1_Click);
             // 
+            // osTextBox
+            // 
+            this.osTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.osTextBox.Location = new System.Drawing.Point(102, 243);
+            this.osTextBox.Name = "osTextBox";
+            this.osTextBox.ReadOnly = true;
+            this.osTextBox.Size = new System.Drawing.Size(335, 20);
+            this.osTextBox.TabIndex = 22;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(70, 246);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(25, 13);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "OS:";
+            // 
             // SystemSpecs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 536);
+            this.ClientSize = new System.Drawing.Size(597, 562);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.graphicsPictureBox);
             this.Controls.Add(this.procPictureBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(613, 600);
             this.Name = "SystemSpecs";
             this.Text = "System Specifications";
             this.Load += new System.EventHandler(this.SystemSpecs_Load);
@@ -329,5 +354,7 @@
         private System.Windows.Forms.TextBox ramTextBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.TextBox osTextBox;
+        private System.Windows.Forms.Label label10;
     }
 }
