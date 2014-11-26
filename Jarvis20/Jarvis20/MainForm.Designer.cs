@@ -165,7 +165,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader timeHeader;
         private System.Windows.Forms.ColumnHeader cpuHeader;
         private System.Windows.Forms.ColumnHeader memHeader;
@@ -175,6 +174,7 @@
         private System.Windows.Forms.Button writeToLogFile;
         private System.Windows.Forms.Button Specs_Button;
         private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.ListView listView1;
     }
 }
 

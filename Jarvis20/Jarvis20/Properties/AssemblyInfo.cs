@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Jarvis20")]
 [assembly: AssemblyDescription("Jarvis is a simple resource monitor written in C#.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Jarvin Inc")]
 [assembly: AssemblyProduct("Jarvis20")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.82.0.0")]
-[assembly: AssemblyFileVersion("2.82.0.0")]
+[assembly: AssemblyVersion("2.87.0.0")]
+[assembly: AssemblyFileVersion("2.87.0.0")]

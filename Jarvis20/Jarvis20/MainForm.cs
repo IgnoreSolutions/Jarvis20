@@ -21,7 +21,7 @@ namespace Jarvis20
         SpeechSynthesizer synth = new SpeechSynthesizer(); //This speaks
         PerformanceCounter perfCpuCount = new PerformanceCounter("Processor Information", "% Processor Time", "_Total"); //This monitors CPU load
         PerformanceCounter perfMemCount = new PerformanceCounter("Memory", "Available MBytes"); //This monitors available memory
-        PerformanceCounter perfUptimeCount = new PerformanceCounter("System", "System Up Time"); //This monitors system up time
+        public PerformanceCounter perfUptimeCount = new PerformanceCounter("System", "System Up Time"); //This monitors system up time
         bool paused = false; //Whether or not Jarvis is paused
 
 
@@ -167,17 +167,18 @@ namespace Jarvis20
             //Declares the safe file dialog variable, gives it a title, and sets the filter (files to be shown)
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Title = "Save log as...";
+            string now = DateTime.Now.ToString();
+            string strip = now.Replace(":", "-");
+            string strip2 = strip.Replace("/", "-");
+            sfd.FileName = string.Format("Jarvis Log {0}.txt", strip2);
             sfd.Filter = "Text File (*.txt)|*.txt|All Files (*.*)|*.*";
             DialogResult dr = sfd.ShowDialog(); //The user's choice stored into a variable
             switch(dr)
             {
                     //If they choose OK
                 case(DialogResult.OK):
-                    WriteToLogFile(sfd.FileName);
-                    MessageBox.Show(String.Format("File written to {0} successfully!", sfd.FileName), 
-                        "Information", 
-                        MessageBoxButtons.OK, 
-                        MessageBoxIcon.Information); //Show a confirmation
+                    ExportLog el = new ExportLog(sfd.FileName, this);
+                    el.ShowDialog();
                     break;
                 case(DialogResult.Cancel):
                     //If they chose cancel, do nothing then
@@ -185,7 +186,7 @@ namespace Jarvis20
             }
         }
 
-        
+
         // Log file Commands
         private void WriteToLogFile(string fileToSave)
         {
@@ -225,7 +226,6 @@ namespace Jarvis20
         /// <returns></returns>
         public static string GetComponent(string hwclass, string syntax)
         {
-            
             ManagementObjectSearcher mos = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM " + hwclass);
             foreach (ManagementObject mj in mos.Get())
             {
@@ -239,7 +239,6 @@ namespace Jarvis20
             AboutForm af = new AboutForm(); //Declares the AboutForm variable
             af.ShowDialog();              //Shows it as a dialog, meaning the user won't be able to interact with the elements below until this dialog is closed
         }
-
         //
     }
 }

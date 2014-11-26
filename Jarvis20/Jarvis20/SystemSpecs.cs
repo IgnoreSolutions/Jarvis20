@@ -125,7 +125,7 @@ namespace Jarvis20
             return null;
         }
 
-        private string returnArchitecture(string toDetect)
+        public static string returnArchitecture(string toDetect)
         {
             int bit = int.Parse(toDetect);
             switch(bit)
