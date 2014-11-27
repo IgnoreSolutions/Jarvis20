@@ -132,13 +132,10 @@ namespace Jarvis20
             {
                 case(9):
                     return "64";
-                    break;
                 case(6):
                     return "IA64";
-                    break;
                 case(0):
                     return "32";
-                    break;
             }
 
             return null;

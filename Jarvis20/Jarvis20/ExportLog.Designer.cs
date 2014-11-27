@@ -31,9 +31,9 @@
             this.exportSystemSpecifications = new System.Windows.Forms.CheckBox();
             this.exportCurrentSystemUptime = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.logPreviewTextBox = new System.Windows.Forms.RichTextBox();
             this.exportButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.logPreviewTextBox = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -42,9 +42,10 @@
             // 
             this.exportSystemSpecifications.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.exportSystemSpecifications.AutoSize = true;
-            this.exportSystemSpecifications.Location = new System.Drawing.Point(12, 342);
+            this.exportSystemSpecifications.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.exportSystemSpecifications.Location = new System.Drawing.Point(12, 341);
             this.exportSystemSpecifications.Name = "exportSystemSpecifications";
-            this.exportSystemSpecifications.Size = new System.Drawing.Size(162, 17);
+            this.exportSystemSpecifications.Size = new System.Drawing.Size(168, 18);
             this.exportSystemSpecifications.TabIndex = 0;
             this.exportSystemSpecifications.Text = "Export System Specifications";
             this.exportSystemSpecifications.UseVisualStyleBackColor = true;
@@ -54,9 +55,10 @@
             // 
             this.exportCurrentSystemUptime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.exportCurrentSystemUptime.AutoSize = true;
-            this.exportCurrentSystemUptime.Location = new System.Drawing.Point(12, 365);
+            this.exportCurrentSystemUptime.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.exportCurrentSystemUptime.Location = new System.Drawing.Point(12, 364);
             this.exportCurrentSystemUptime.Name = "exportCurrentSystemUptime";
-            this.exportCurrentSystemUptime.Size = new System.Drawing.Size(173, 17);
+            this.exportCurrentSystemUptime.Size = new System.Drawing.Size(179, 18);
             this.exportCurrentSystemUptime.TabIndex = 1;
             this.exportCurrentSystemUptime.Text = "Export Current System Up-Time";
             this.exportCurrentSystemUptime.UseVisualStyleBackColor = true;
@@ -68,16 +70,28 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(419, 293);
+            this.groupBox1.Size = new System.Drawing.Size(457, 293);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Log Preview";
+            // 
+            // logPreviewTextBox
+            // 
+            this.logPreviewTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logPreviewTextBox.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logPreviewTextBox.Location = new System.Drawing.Point(3, 16);
+            this.logPreviewTextBox.Name = "logPreviewTextBox";
+            this.logPreviewTextBox.Size = new System.Drawing.Size(451, 274);
+            this.logPreviewTextBox.TabIndex = 0;
+            this.logPreviewTextBox.Text = "";
+            this.logPreviewTextBox.ZoomFactor = 1.2F;
             // 
             // exportButton
             // 
             this.exportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exportButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.exportButton.Location = new System.Drawing.Point(332, 359);
+            this.exportButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.exportButton.Location = new System.Drawing.Point(289, 359);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(75, 23);
             this.exportButton.TabIndex = 3;
@@ -89,22 +103,13 @@
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(251, 359);
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cancelButton.Location = new System.Drawing.Point(370, 359);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            // 
-            // logPreviewTextBox
-            // 
-            this.logPreviewTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logPreviewTextBox.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logPreviewTextBox.Location = new System.Drawing.Point(3, 16);
-            this.logPreviewTextBox.Name = "logPreviewTextBox";
-            this.logPreviewTextBox.Size = new System.Drawing.Size(413, 274);
-            this.logPreviewTextBox.TabIndex = 0;
-            this.logPreviewTextBox.Text = "";
             // 
             // label1
             // 
@@ -120,14 +125,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 392);
+            this.ClientSize = new System.Drawing.Size(457, 392);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.exportButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.exportCurrentSystemUptime);
             this.Controls.Add(this.exportSystemSpecifications);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ExportLog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

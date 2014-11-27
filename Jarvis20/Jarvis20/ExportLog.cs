@@ -103,7 +103,7 @@ namespace Jarvis20
                     sw.WriteLine("");
                 }
                 if (uptime != null)
-                    sw.WriteLine(uptime);
+                { sw.WriteLine(uptime); sw.WriteLine(""); }
 
                 sw.WriteLine("Time\t\t\tCPU Usage %\tMem Avail MB");
                 foreach (ListViewItem lvi in mf.listView1.Items)
@@ -114,6 +114,7 @@ namespace Jarvis20
                     sw.WriteLine(String.Format("{0}\t{1}\t\t{2}", date, cpu, mem));
                 }
                 sw.Flush();
+                MessageBox.Show(string.Format("Log written to {0} successfully!", fileToWriteTo), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception ex)
             {
@@ -153,7 +154,7 @@ namespace Jarvis20
                 Thread t = new Thread(new ParameterizedThreadStart(exportLog));
                 t.Start(fileToWriteTo);
                 exportLog(fileToWriteTo);
-                MessageBox.Show(string.Format("Log written to {0} successfully!", fileToWriteTo), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
             catch(Exception ex)
             {
