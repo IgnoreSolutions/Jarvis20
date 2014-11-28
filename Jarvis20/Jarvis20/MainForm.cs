@@ -80,21 +80,35 @@ namespace Jarvis20
                         if (curCpuPercentage == 100)
                         {
                             string cpuLoadVocalMessage = String.Format("WARNING: Your CPU is at 100%", curCpuPercentage);
+                            
+                            if (this.Visible == false)
+                            {
+                                notifyIcon.BalloonTipText = "Warning! CPU Usage is at 100%!";
+                                notifyIcon.ShowBalloonTip(1000);
+                            }
                             Speak(cpuLoadVocalMessage, VoiceGender.Male, 1);
                         }
                         else
                         {
                             string cpuLoadVocalMessage = String.Format("WARNING: CPU Usage is at 80% or higher!", curCpuPercentage);
+                            if (this.Visible == false)
+                            {
+                                notifyIcon.BalloonTipText = String.Format("Warning! CPU Usage is at {0}%!", curCpuPercentage);
+                                notifyIcon.ShowBalloonTip(1000);
+                            }
                             Speak(cpuLoadVocalMessage, VoiceGender.Male, 3);
                         }
                     }
                     if (curMemAvail < 512)
                     {
                         string memLoadVocalMessage = "You currently have less than a half a gig of RAM available!";
+                        if (this.Visible == false)
+                        {
+                            notifyIcon.BalloonTipText = String.Format("Warning! You currently have {0}mb of RAM available!", curMemAvail);
+                            notifyIcon.ShowBalloonTip(1000);
+                        }
                         Speak(memLoadVocalMessage, VoiceGender.Male);
                     }
-                    //
-
                     Thread.Sleep(1000);
                 }
             }
@@ -159,7 +173,27 @@ namespace Jarvis20
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Environment.Exit(0); //Exit the program, '0' is the return code used by the OS to indicate no errors
+            //Environment.Exit(0); //Exit the program, '0' is the return code used by the OS to indicate no errors
+            DialogResult dr = MessageBox.Show("Would you like to minimize Jarvis to the system tray? Answering no will close the program.",
+                "Question",
+                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            switch(dr)
+            {
+                case(DialogResult.Yes):
+                    e.Cancel = true;
+                    notifyIcon.Visible = true;
+                    this.Hide();
+                    notifyIcon.BalloonTipText = "Jarvis is still running\nDouble click the system tray icon to bring him back.";
+                    notifyIcon.ShowBalloonTip(1200);
+                    break;
+                case(DialogResult.No):
+                    notifyIcon.Visible = false;
+                    Environment.Exit(0);
+                    break;
+                case(DialogResult.Cancel):
+                    //do nothing
+                    break;
+            }
         }
 
         private void writeToLogFile_Click(object sender, EventArgs e)
@@ -237,7 +271,16 @@ namespace Jarvis20
         private void button1_Click_1(object sender, EventArgs e)
         {
             AboutForm af = new AboutForm(); //Declares the AboutForm variable
-            af.ShowDialog();              //Shows it as a dialog, meaning the user won't be able to interact with the elements below until this dialog is closed
+            af.ShowDialog();                //Shows it as a dialog, meaning the user won't be able to interact with the elements below until this dialog is closed
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (this.Visible == false)
+            { 
+                this.Visible = true; 
+                notifyIcon.Visible = false; 
+            }
         }
         //
     }
