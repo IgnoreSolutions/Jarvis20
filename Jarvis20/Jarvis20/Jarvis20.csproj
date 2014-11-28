@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -78,6 +79,13 @@
     <Compile Include="SystemSpecs.Designer.cs">
       <DependentUpon>SystemSpecs.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaskDialog\ActiveTaskDialog.cs" />
+    <Compile Include="TaskDialog\TaskDialog.cs" />
+    <Compile Include="TaskDialog\TaskDialogCommonDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TaskDialog\TaskDialogNotificationArgs.cs" />
+    <Compile Include="TaskDialog\UnsafeNativeMethods.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>

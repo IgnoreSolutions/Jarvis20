@@ -12,6 +12,7 @@ using System.Threading;
 using System.IO;
 using System.Management;
 using System.Reflection;
+using Microsoft.Samples;
 
 namespace Jarvis20
 {
@@ -173,7 +174,6 @@ namespace Jarvis20
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Environment.Exit(0); //Exit the program, '0' is the return code used by the OS to indicate no errors
             DialogResult dr = MessageBox.Show("Would you like to minimize Jarvis to the system tray? Answering no will close the program.",
                 "Question",
                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
