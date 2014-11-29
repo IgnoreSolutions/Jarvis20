@@ -24,7 +24,7 @@ namespace Jarvis20
         PerformanceCounter perfMemCount = new PerformanceCounter("Memory", "Available MBytes"); //This monitors available memory
         public PerformanceCounter perfUptimeCount = new PerformanceCounter("System", "System Up Time"); //This monitors system up time
         bool paused = false; //Whether or not Jarvis is paused
-
+        bool terminating = false;
 
         public MainForm()
         {
@@ -48,69 +48,73 @@ namespace Jarvis20
             synth.Speak(String.Format("Welcome to Jarvis version {0} point {1}, beta build", ver.Major, ver.Minor));
             GetCurrentInformation();
             Thread thrd = new Thread(loop);
+            thrd.IsBackground = true;
             thrd.Start();
         }
        
         private void loop()
         {
-            while(true)
+            while (true)
             {
-                if (!paused)
+                if (terminating == false)
                 {
-                    //Temperature temp = new Temperature();
-                    
-                    ListViewItem lvi = new ListViewItem();
-                    string currentDateTime = DateTime.Now.ToString();
-                    int curCpuPercentage = (int)perfCpuCount.NextValue();
-                    int curMemAvail = (int)perfMemCount.NextValue();
-                    lvi.Text = currentDateTime; //.Text is the property indicating the first column
-                    lvi.SubItems.Add(String.Format("{0}%", curCpuPercentage.ToString())); //All 'SubItems.Add's following will correspond to the next rows. This is second row
-                    lvi.SubItems.Add(String.Format("{0} MB", curMemAvail.ToString())); //Third row
-                    listView1.Items.Add(lvi); //Adds the ListViewItem to the ListView
-                    //This will set the TextBox's text to however long the system's been up
-                    TimeSpan uptimeSpan = TimeSpan.FromSeconds(perfUptimeCount.NextValue());
-                    string systemUptimeMessage = string.Format("{0} hrs {1} mins {2} secs", (int)uptimeSpan.Hours, (int)uptimeSpan.Minutes, (int)uptimeSpan.Seconds);
-                    uptimeTextBox.Text = systemUptimeMessage;
-                    //Scroll down to the bottom
-                    listView1.Items[listView1.Items.Count - 1].EnsureVisible();
-                    //
+                    if (!paused)
+                    {
+                        //Temperature temp = new Temperature();
 
-                    //For when stuff is astronomically large like Mike's dong
-                    if (curCpuPercentage > 80)
-                    {
-                        if (curCpuPercentage == 100)
+                        ListViewItem lvi = new ListViewItem();
+                        string currentDateTime = DateTime.Now.ToString();
+                        int curCpuPercentage = (int)perfCpuCount.NextValue();
+                        int curMemAvail = (int)perfMemCount.NextValue();
+                        lvi.Text = currentDateTime; //.Text is the property indicating the first column
+                        lvi.SubItems.Add(String.Format("{0}%", curCpuPercentage.ToString())); //All 'SubItems.Add's following will correspond to the next rows. This is second row
+                        lvi.SubItems.Add(String.Format("{0} MB", curMemAvail.ToString())); //Third row
+                        listView1.Items.Add(lvi); //Adds the ListViewItem to the ListView
+                        //This will set the TextBox's text to however long the system's been up
+                        TimeSpan uptimeSpan = TimeSpan.FromSeconds(perfUptimeCount.NextValue());
+                        string systemUptimeMessage = string.Format("{0} hrs {1} mins {2} secs", (int)uptimeSpan.Hours, (int)uptimeSpan.Minutes, (int)uptimeSpan.Seconds);
+                        uptimeTextBox.Text = systemUptimeMessage;
+                        //Scroll down to the bottom
+                        listView1.Items[listView1.Items.Count - 1].EnsureVisible();
+                        //
+
+                        //For when stuff is astronomically large like Mike's dong
+                        if (curCpuPercentage > 80)
                         {
-                            string cpuLoadVocalMessage = String.Format("WARNING: Your CPU is at 100%", curCpuPercentage);
-                            
+                            if (curCpuPercentage == 100)
+                            {
+                                string cpuLoadVocalMessage = String.Format("WARNING: Your CPU is at 100%", curCpuPercentage);
+
+                                if (this.Visible == false)
+                                {
+                                    notifyIcon.BalloonTipText = "Warning! CPU Usage is at 100%!";
+                                    notifyIcon.ShowBalloonTip(1000);
+                                }
+                                Speak(cpuLoadVocalMessage, VoiceGender.Male, 1);
+                            }
+                            else
+                            {
+                                string cpuLoadVocalMessage = String.Format("WARNING: CPU Usage is at 80% or higher!", curCpuPercentage);
+                                if (this.Visible == false)
+                                {
+                                    notifyIcon.BalloonTipText = String.Format("Warning! CPU Usage is at {0}%!", curCpuPercentage);
+                                    notifyIcon.ShowBalloonTip(1000);
+                                }
+                                Speak(cpuLoadVocalMessage, VoiceGender.Male, 3);
+                            }
+                        }
+                        if (curMemAvail < 512)
+                        {
+                            string memLoadVocalMessage = "You currently have less than a half a gig of RAM available!";
                             if (this.Visible == false)
                             {
-                                notifyIcon.BalloonTipText = "Warning! CPU Usage is at 100%!";
+                                notifyIcon.BalloonTipText = String.Format("Warning! You currently have {0}mb of RAM available!", curMemAvail);
                                 notifyIcon.ShowBalloonTip(1000);
                             }
-                            Speak(cpuLoadVocalMessage, VoiceGender.Male, 1);
+                            Speak(memLoadVocalMessage, VoiceGender.Male);
                         }
-                        else
-                        {
-                            string cpuLoadVocalMessage = String.Format("WARNING: CPU Usage is at 80% or higher!", curCpuPercentage);
-                            if (this.Visible == false)
-                            {
-                                notifyIcon.BalloonTipText = String.Format("Warning! CPU Usage is at {0}%!", curCpuPercentage);
-                                notifyIcon.ShowBalloonTip(1000);
-                            }
-                            Speak(cpuLoadVocalMessage, VoiceGender.Male, 3);
-                        }
+                        Thread.Sleep(1000);
                     }
-                    if (curMemAvail < 512)
-                    {
-                        string memLoadVocalMessage = "You currently have less than a half a gig of RAM available!";
-                        if (this.Visible == false)
-                        {
-                            notifyIcon.BalloonTipText = String.Format("Warning! You currently have {0}mb of RAM available!", curMemAvail);
-                            notifyIcon.ShowBalloonTip(1000);
-                        }
-                        Speak(memLoadVocalMessage, VoiceGender.Male);
-                    }
-                    Thread.Sleep(1000);
                 }
             }
         }
@@ -171,28 +175,31 @@ namespace Jarvis20
                 listView1.Items.Add(lvi);
             }
         }
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Would you like to minimize Jarvis to the system tray? Answering no will close the program.",
-                "Question",
-                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            switch(dr)
+            if (terminating == false)
             {
-                case(DialogResult.Yes):
-                    e.Cancel = true;
-                    notifyIcon.Visible = true;
-                    this.Hide();
-                    notifyIcon.BalloonTipText = "Jarvis is still running\nDouble click the system tray icon to bring him back.";
-                    notifyIcon.ShowBalloonTip(1200);
-                    break;
-                case(DialogResult.No):
-                    notifyIcon.Visible = false;
-                    Environment.Exit(0);
-                    break;
-                case(DialogResult.Cancel):
-                    //do nothing
-                    break;
+                DialogResult dr = MessageBox.Show("Would you like to minimize Jarvis to the system tray? Answering no will close the program.",
+                    "Question",
+                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                switch (dr)
+                {
+                    case (DialogResult.Yes):
+                        e.Cancel = true;
+                        notifyIcon.Visible = true;
+                        this.Hide();
+                        notifyIcon.BalloonTipText = "Jarvis is still running\nDouble click the system tray icon to bring him back.";
+                        notifyIcon.ShowBalloonTip(1200);
+                        break;
+                    case (DialogResult.No):
+                        notifyIcon.Visible = false;
+                        terminating = true;
+                        Application.Exit();
+                        break;
+                    case (DialogResult.Cancel):
+                        //do nothing
+                        break;
+                }
             }
         }
 
