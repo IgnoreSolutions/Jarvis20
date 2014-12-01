@@ -69,7 +69,7 @@ namespace Jarvis20
             networkTextBox.Text = network;
             procTextBox.Text = string.Format("{0} @ {1}ghz; {2}-Bit", proc, maxClockSpeedGhz.ToString(), returnArchitecture(arch));
             ramTextBox.Text = mb_gb.ToString();
-            videoCardTextBox.Text = string.Format("{0} {1}GB ({2} MB)", vidCard, totalVidRam_mb / 1024f, totalVidRam_mb);
+            videoCardTextBox.Text = string.Format("{0} {1}GB ({2} MB)", vidCard, Math.Round(totalVidRam_mb / 1024f, 2), totalVidRam_mb);
             soundCardTextBox.Text = soundCard;
             moboTextBox.Text = moboIdent;
             cdRomTextBox.Text = cdRom;
