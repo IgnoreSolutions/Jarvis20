@@ -12,7 +12,7 @@ using System.Threading;
 using System.IO;
 using System.Management;
 using System.Reflection;
-using Microsoft.Samples;
+using WindowBorderColor;
 
 namespace Jarvis20
 {
@@ -30,22 +30,34 @@ namespace Jarvis20
         {
             Font = SystemFonts.MessageBoxFont; //Sets the form's font to the system's default font
             InitializeComponent(); //Shows the form, and its components
+            synth.SelectVoiceByHints(VoiceGender.Male);
             perfUptimeCount.NextValue(); //
             perfCpuCount.NextValue();    // Pulls the initial values first, for accuracy
             perfMemCount.NextValue();    //
             //
             Version ver = Assembly.GetEntryAssembly().GetName().Version; //The executable stores a version too, this retrieves it. This is much more accurate
-            this.Text = string.Format("Jarvis {0}.{1} Beta Build", ver.Major, ver.Minor); //Changes the window's title text to the current version number.
+            #region Platform specific code
+            if(DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows7)
+            {
+                this.Text = String.Format("Jarvette {0}.{1} Beta Build", ver.Major, ver.Minor);
+                synth.Speak(String.Format("Welcome to Jarvette version {0} point {1}, beta build", ver.Major, ver.Minor));
+            }
+            else
+            {
+                this.Text = String.Format("Jarvis {0}.{1} Beta Build", ver.Major, ver.Minor); //Changes the window's title text to the current version number.
+                synth.Speak(String.Format("Welcome to Jarvis version {0} point {1}, beta build", ver.Major, ver.Minor));
+            }
             //
-            synth.SelectVoiceByHints(VoiceGender.Male);
+            if (DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows8 | DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows81)
+                WindowBorderColor.WindowBorderColor.InitializeWindows8Theme(this);
+            //
+            #endregion
         }
 
         // This is the opening Text to speak, and quotes represent what he will say.
         private void Form1_Load(object sender, EventArgs e)
         {
             Control.CheckForIllegalCrossThreadCalls = false;
-            Version ver = Assembly.GetEntryAssembly().GetName().Version;
-            synth.Speak(String.Format("Welcome to Jarvis version {0} point {1}, beta build", ver.Major, ver.Minor));
             GetCurrentInformation();
             Thread thrd = new Thread(loop);
             thrd.IsBackground = true;
@@ -60,8 +72,6 @@ namespace Jarvis20
                 {
                     if (!paused)
                     {
-                        //Temperature temp = new Temperature();
-
                         ListViewItem lvi = new ListViewItem();
                         string currentDateTime = DateTime.Now.ToString();
                         int curCpuPercentage = (int)perfCpuCount.NextValue();
@@ -255,7 +265,7 @@ namespace Jarvis20
         private void button1_Click(object sender, EventArgs e)
         {
             this.UseWaitCursor = true;
-            SystemSpecs ss = new SystemSpecs(this);
+            SystemSpecsForm ss = new SystemSpecsForm(this);
             ss.Show();
         }
 

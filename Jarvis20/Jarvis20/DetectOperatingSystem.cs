@@ -9,7 +9,7 @@ namespace Jarvis20
     {
         public enum OSFriendly { Windows95, Windows98, WindowsME, Windows2000, WindowsXP, WindowsVista, Windows7, Windows8, Windows81, Windows10, Linux, Unknown }
         
-        public OSFriendly OSName()
+        public static OSFriendly OSName()
         {
             double osVersion = double.Parse(Environment.OSVersion.Version.Major.ToString() + "." + Environment.OSVersion.Version.Minor.ToString());
 

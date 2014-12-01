@@ -1,6 +1,6 @@
 ﻿namespace Jarvis20
 {
-    partial class SystemSpecs
+    partial class SystemSpecsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SystemSpecs));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SystemSpecsForm));
             this.label1 = new System.Windows.Forms.Label();
             this.graphicsPictureBox = new System.Windows.Forms.PictureBox();
             this.procPictureBox = new System.Windows.Forms.PictureBox();
             this.toolTipHandler = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.osTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.ramTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cdRomTextBox = new System.Windows.Forms.TextBox();
@@ -52,8 +54,6 @@
             this.procTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
-            this.osTextBox = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.graphicsPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.procPictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -122,6 +122,25 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "System Specifications";
+            // 
+            // osTextBox
+            // 
+            this.osTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.osTextBox.Location = new System.Drawing.Point(102, 243);
+            this.osTextBox.Name = "osTextBox";
+            this.osTextBox.ReadOnly = true;
+            this.osTextBox.Size = new System.Drawing.Size(335, 20);
+            this.osTextBox.TabIndex = 22;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(70, 246);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(25, 13);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "OS:";
             // 
             // ramTextBox
             // 
@@ -287,29 +306,11 @@
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // osTextBox
-            // 
-            this.osTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.osTextBox.Location = new System.Drawing.Point(102, 243);
-            this.osTextBox.Name = "osTextBox";
-            this.osTextBox.ReadOnly = true;
-            this.osTextBox.Size = new System.Drawing.Size(335, 20);
-            this.osTextBox.TabIndex = 22;
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(70, 246);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(25, 13);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "OS:";
-            // 
-            // SystemSpecs
+            // SystemSpecsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(597, 562);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.groupBox1);
@@ -318,7 +319,7 @@
             this.Controls.Add(this.procPictureBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(613, 600);
-            this.Name = "SystemSpecs";
+            this.Name = "SystemSpecsForm";
             this.Text = "System Specifications";
             this.Load += new System.EventHandler(this.SystemSpecs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.graphicsPictureBox)).EndInit();

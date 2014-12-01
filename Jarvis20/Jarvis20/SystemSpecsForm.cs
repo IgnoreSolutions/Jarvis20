@@ -10,21 +10,25 @@ using Microsoft.VisualBasic;
 
 namespace Jarvis20
 {
-    public partial class SystemSpecs : Form
+    public partial class SystemSpecsForm : Form
     {
         MainForm mf;
-        public SystemSpecs()
+        public SystemSpecsForm()
         {
             Font = SystemFonts.MessageBoxFont;
             InitializeComponent();
+            if (DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows8 | DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows81)
+                WindowBorderColor.WindowBorderColor.InitializeWindows8Theme(this);
         }
 
-        public SystemSpecs(MainForm _mf)
+        public SystemSpecsForm(MainForm _mf)
         {
             mf = _mf;
             
             Font = SystemFonts.MessageBoxFont;
             InitializeComponent();
+            if (DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows8 | DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows81)
+                WindowBorderColor.WindowBorderColor.InitializeWindows8Theme(this);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -61,13 +65,20 @@ namespace Jarvis20
             float totalRam_b = float.Parse(totalRam);
             float totalRam_mb = (totalRam_b / 1024f) / 1024f;
             float maxClockSpeedMhz = float.Parse(clockSpeed);
-            float maxClockSpeedGhz = maxClockSpeedMhz / 1000f;
+            float maxClockSpeedGhz = (float)Math.Round(maxClockSpeedMhz / 1000f, 2);
             float totalVidRam_b = float.Parse(vidCard_RAM);
             float totalVidRam_mb = (totalVidRam_b / 1024f) / 1024f;
             string mb_gb = string.Format("{1} GB ({0} MB)", totalRam_mb, Math.Round(totalRam_mb / 1024f, 2));
             //
             networkTextBox.Text = network;
-            procTextBox.Text = string.Format("{0} @ {1}ghz; {2}-Bit", proc, maxClockSpeedGhz.ToString(), returnArchitecture(arch));
+            if(proc.IndexOf("ghz", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
+            {
+                procTextBox.Text = string.Format("{0}; {1}-Bit", proc, returnArchitecture(arch));
+            }
+            else
+            {
+                procTextBox.Text = string.Format("{0} @ {1}ghz; {2}-Bit", proc, maxClockSpeedGhz.ToString(), returnArchitecture(arch));
+            }
             ramTextBox.Text = mb_gb.ToString();
             videoCardTextBox.Text = string.Format("{0} {1}GB ({2} MB)", vidCard, Math.Round(totalVidRam_mb / 1024f, 2), totalVidRam_mb);
             soundCardTextBox.Text = soundCard;

@@ -17,13 +17,17 @@ namespace Jarvis20
         public AboutForm()
         {
             InitializeComponent();
-
+            if (DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows8 | DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows81)
+                WindowBorderColor.WindowBorderColor.InitializeWindows8Theme(this);
         }
 
         private void AboutForm_Load(object sender, EventArgs e)
         {
             Version ver = Assembly.GetEntryAssembly().GetName().Version; //The executable stores a version too, this retrieves it. This is much more accurate
             versionLabel.Text = String.Format("v{0}.{1}", ver.Major, ver.Minor);
+            //
+            if (DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows7)
+                titleLabel.Text = "Jarvette";
         }
 
         private void okButton_Click(object sender, EventArgs e)
@@ -45,7 +49,10 @@ namespace Jarvis20
                     whatToSay = "I came here to kick ass and chew bubble gum, and I'm all out of bubble gum";
                     break;
                 case(1):
-                    whatToSay = "I've got balls of steel";
+                    if (DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows7)
+                        whatToSay = "I've got ovaries of steel";
+                    else
+                        whatToSay = "I've got balls of steel";
                     break;
                 case(2):
                     whatToSay = "Hail to the king, baby";

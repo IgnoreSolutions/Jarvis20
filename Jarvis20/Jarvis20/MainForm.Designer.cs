@@ -52,6 +52,7 @@
             this.timeHeader,
             this.cpuHeader,
             this.memHeader});
+            this.listView1.FullRowSelect = true;
             this.listView1.Location = new System.Drawing.Point(14, 15);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(632, 205);
@@ -79,7 +80,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(12, 247);
+            this.label1.Location = new System.Drawing.Point(14, 247);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 20);
             this.label1.TabIndex = 1;
@@ -88,7 +89,7 @@
             // uptimeTextBox
             // 
             this.uptimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.uptimeTextBox.Location = new System.Drawing.Point(12, 270);
+            this.uptimeTextBox.Location = new System.Drawing.Point(14, 270);
             this.uptimeTextBox.Name = "uptimeTextBox";
             this.uptimeTextBox.ReadOnly = true;
             this.uptimeTextBox.Size = new System.Drawing.Size(141, 20);
@@ -154,6 +155,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(656, 368);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Specs_Button);

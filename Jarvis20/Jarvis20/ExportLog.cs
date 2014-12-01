@@ -27,7 +27,8 @@ namespace Jarvis20
             fileToWriteTo = fileToWriteTo_;
             Font = SystemFonts.MessageBoxFont;
             InitializeComponent();
-
+            if (DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows8 | DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows81)
+                WindowBorderColor.WindowBorderColor.InitializeWindows8Theme(this);
         }
 
         private void ExportLog_Load(object sender, EventArgs e)
