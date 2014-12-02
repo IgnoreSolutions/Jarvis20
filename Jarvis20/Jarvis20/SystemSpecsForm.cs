@@ -105,11 +105,12 @@ namespace Jarvis20
             {
                 return Jarvis20.Properties.Resources.intel_logo;
             }
-            else if(toDetect.IndexOf("pentium", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
+            else if (toDetect.IndexOf("pentium", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
             {
                 return Jarvis20.Properties.Resources.intel_logo;
             }
-            return null;
+            else
+                return Jarvis20.Properties.Resources.unknown;
         }
 
         private Bitmap detectGpuManufacturer(string toDetect)
@@ -118,7 +119,7 @@ namespace Jarvis20
             {
                 if (toDetect.IndexOf("ati", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
                 {
-                    //return ATI Radeon logo
+                    return Jarvis20.Properties.Resources.ati_radeon_logo;
                 }
                 else
                 {
@@ -133,6 +134,8 @@ namespace Jarvis20
             {
                 return Jarvis20.Properties.Resources.intel_graphics;
             }
+            else
+                return Jarvis20.Properties.Resources.unknown;
             return null;
         }
 

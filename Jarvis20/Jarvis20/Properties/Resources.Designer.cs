@@ -83,6 +83,16 @@ namespace Jarvis20.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ati_radeon_logo {
+            get {
+                object obj = ResourceManager.GetObject("ati_radeon_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BetterIcon {
             get {
                 object obj = ResourceManager.GetObject("BetterIcon", resourceCulture);
@@ -136,6 +146,16 @@ namespace Jarvis20.Properties {
         internal static System.Drawing.Bitmap nvidia_logo {
             get {
                 object obj = ResourceManager.GetObject("nvidia_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unknown {
+            get {
+                object obj = ResourceManager.GetObject("unknown", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

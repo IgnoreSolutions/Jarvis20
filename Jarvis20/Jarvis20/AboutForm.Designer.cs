@@ -71,7 +71,7 @@
             // informationRichText
             // 
             this.informationRichText.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.informationRichText.Location = new System.Drawing.Point(13, 226);
+            this.informationRichText.Location = new System.Drawing.Point(9, 226);
             this.informationRichText.Name = "informationRichText";
             this.informationRichText.ReadOnly = true;
             this.informationRichText.Size = new System.Drawing.Size(546, 163);
@@ -94,18 +94,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(567, 423);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(563, 426);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.informationRichText);
             this.Controls.Add(this.versionLabel);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.iconPictureBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AboutForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "About";
             this.Load += new System.EventHandler(this.AboutForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).EndInit();
             this.ResumeLayout(false);

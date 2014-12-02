@@ -120,7 +120,7 @@
   <data name="informationRichText.Text" xml:space="preserve">
     <value>Jarvis is a simple resource monitoring program. Jarvis outputs the CPU Load and how much memory you have left every second. Jarvis will also speak to you when your CPU Load has reached 80% or higher or when you have less than half a gig of RAM available.
 
-This program was made by Zachary Lees and Mike Santiago using C#/Visual Studio and the .NET Framework 4.0.
+This program was made by Zachary Lees and Mike Santiago using C#/Visual Studio and the .NET Framework 4.5.x.
 Thank you very much for using Jarvis! :)</value>
   </data>
 </root>

@@ -27,7 +27,11 @@ namespace Jarvis20
             versionLabel.Text = String.Format("v{0}.{1}", ver.Major, ver.Minor);
             //
             if (DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows7)
+            {   
                 titleLabel.Text = "Jarvette";
+                titleLabel.Location = new Point(titleLabel.Location.X - 5, titleLabel.Location.Y);
+            }
+
         }
 
         private void okButton_Click(object sender, EventArgs e)

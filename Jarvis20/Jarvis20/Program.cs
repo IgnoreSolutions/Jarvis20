@@ -20,7 +20,7 @@ namespace Jarvis20
         {
             if (args.Contains("-nogui"))
             {
-                ShowConsoleWindow();
+                NoGUI.ShowConsoleWindow();
                 Console.WriteLine("Passed argument '-nogui', resorting to console");
                 NoGUI.RunConsoleLoop();
             }

@@ -299,9 +299,14 @@ namespace Jarvis20
         // This tells the computer to look for HardWare Specs
         private void button1_Click(object sender, EventArgs e)
         {
-            this.UseWaitCursor = true;
+            this.Cursor = Cursors.WaitCursor;
+            Specs_Button.Enabled = false;
+            Specs_Button.Text = "Loading specs..";
             SystemSpecsForm ss = new SystemSpecsForm(this);
             ss.Show();
+            this.Cursor = Cursors.Default;
+            Specs_Button.Enabled = true;
+            Specs_Button.Text = "System Specs";
         }
 
         /// <summary>
