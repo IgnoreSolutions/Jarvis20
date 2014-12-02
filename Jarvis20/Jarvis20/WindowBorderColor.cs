@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace WindowBorderColor
 {
@@ -15,10 +16,18 @@ namespace WindowBorderColor
         /// <returns>System.Drawing.Color drawingColor: the actual color</returns>
         public static System.Drawing.Color BorderColor()
         {
-            System.Windows.Media.Color mediaColor = SystemParameters.WindowGlassColor;
-            
+            System.Windows.Media.Color mediaColor;
+            mediaColor = SystemParameters.WindowGlassColor;
             System.Drawing.Color drawingColor = System.Drawing.Color.FromArgb(160, mediaColor.R, mediaColor.G, mediaColor.B);
             return drawingColor;
+        }
+
+        static void SystemParameters_StaticPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "WindowGlassColor")
+            {
+                BorderColor();
+            }
         }
         /// <summary>
         /// Gets the right ContrastColor (aka set your font color to whatever this spits out)
@@ -42,6 +51,7 @@ namespace WindowBorderColor
         //
         public static void InitializeWindows8Theme(System.Windows.Forms.Form frm)
         {
+            Console.WriteLine("Initializing theme");
             System.Drawing.Color windowBorderColor = BorderColor();
             System.Drawing.Color fontcolor = ConstrastColor(windowBorderColor);
 

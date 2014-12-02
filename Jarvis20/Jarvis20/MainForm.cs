@@ -28,8 +28,9 @@ namespace Jarvis20
 
         public MainForm()
         {
-            Font = SystemFonts.MessageBoxFont; //Sets the form's font to the system's default font
+            Font = System.Drawing.SystemFonts.MessageBoxFont; //Sets the form's font to the system's default font
             InitializeComponent(); //Shows the form, and its components
+            System.Windows.SystemParameters.StaticPropertyChanged += SystemParameters_StaticPropertyChanged;
             synth.SelectVoiceByHints(VoiceGender.Male);
             perfUptimeCount.NextValue(); //
             perfCpuCount.NextValue();    // Pulls the initial values first, for accuracy
@@ -54,6 +55,19 @@ namespace Jarvis20
             #endregion
         }
 
+        void SystemParameters_StaticPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "WindowGlassBrush")
+            {
+                WindowBorderColor.WindowBorderColor.InitializeWindows8Theme(this);
+            }
+        }
+        public override void Refresh()
+        {
+            base.Refresh();
+            if (DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows8 || DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows81)
+                WindowBorderColor.WindowBorderColor.InitializeWindows8Theme(this);
+        }
         // This is the opening Text to speak, and quotes represent what he will say.
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -66,6 +80,9 @@ namespace Jarvis20
        
         private void loop()
         {
+            int memWarningLevel = 0;
+            int cpuWarningLevel = 0;
+
             while (true)
             {
                 if (terminating == false)
@@ -93,35 +110,53 @@ namespace Jarvis20
                         {
                             if (curCpuPercentage == 100)
                             {
-                                string cpuLoadVocalMessage = String.Format("WARNING: Your CPU is at 100%", curCpuPercentage);
-
-                                if (this.Visible == false)
+                                if (cpuWarningLevel > 9)
+                                    cpuWarningLevel = 0;
+                                if (cpuWarningLevel == 0)
                                 {
-                                    notifyIcon.BalloonTipText = "Warning! CPU Usage is at 100%!";
-                                    notifyIcon.ShowBalloonTip(1000);
+                                    string cpuLoadVocalMessage = String.Format("WARNING: Your CPU is at 100%", curCpuPercentage);
+
+                                    if (this.Visible == false)
+                                    {
+                                        notifyIcon.BalloonTipText = "Warning! CPU Usage is at 100%!";
+                                        notifyIcon.ShowBalloonTip(1000);
+                                    }
+                                    Speak(cpuLoadVocalMessage, VoiceGender.Male, 1);
                                 }
-                                Speak(cpuLoadVocalMessage, VoiceGender.Male, 1);
+                                cpuWarningLevel++;
                             }
                             else
                             {
-                                string cpuLoadVocalMessage = String.Format("WARNING: CPU Usage is at 80% or higher!", curCpuPercentage);
-                                if (this.Visible == false)
+                                if (cpuWarningLevel > 9)
+                                    cpuWarningLevel = 0;
+                                if (cpuWarningLevel == 0)
                                 {
-                                    notifyIcon.BalloonTipText = String.Format("Warning! CPU Usage is at {0}%!", curCpuPercentage);
-                                    notifyIcon.ShowBalloonTip(1000);
+                                    string cpuLoadVocalMessage = String.Format("WARNING: CPU Usage is at 80% or higher!", curCpuPercentage);
+                                    if (this.Visible == false)
+                                    {
+                                        notifyIcon.BalloonTipText = String.Format("Warning! CPU Usage is at {0}%!", curCpuPercentage);
+                                        notifyIcon.ShowBalloonTip(1000);
+                                    }
+                                    Speak(cpuLoadVocalMessage, VoiceGender.Male, 3);
                                 }
-                                Speak(cpuLoadVocalMessage, VoiceGender.Male, 3);
+                                cpuWarningLevel++;
                             }
                         }
                         if (curMemAvail < 512)
                         {
-                            string memLoadVocalMessage = "You currently have less than a half a gig of RAM available!";
-                            if (this.Visible == false)
+                            if (memWarningLevel > 9)
+                                memWarningLevel = 0;
+                            if (memWarningLevel == 0)
                             {
-                                notifyIcon.BalloonTipText = String.Format("Warning! You currently have {0}mb of RAM available!", curMemAvail);
-                                notifyIcon.ShowBalloonTip(1000);
+                                string memLoadVocalMessage = "You currently have less than a half a gig of RAM available!";
+                                if (this.Visible == false)
+                                {
+                                    notifyIcon.BalloonTipText = String.Format("Warning! You currently have {0}mb of RAM available!", curMemAvail);
+                                    notifyIcon.ShowBalloonTip(1000);
+                                }
+                                Speak(memLoadVocalMessage, VoiceGender.Male);
                             }
-                            Speak(memLoadVocalMessage, VoiceGender.Male);
+                            memWarningLevel++;
                         }
                         Thread.Sleep(1000);
                     }
@@ -277,12 +312,19 @@ namespace Jarvis20
         /// <returns></returns>
         public static string GetComponent(string hwclass, string syntax)
         {
-            ManagementObjectSearcher mos = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM " + hwclass);
-            foreach (ManagementObject mj in mos.Get())
+            try
             {
-                return mj[syntax].ToString();
+                ManagementObjectSearcher mos = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM " + hwclass);
+                foreach (ManagementObject mj in mos.Get())
+                {
+                    return mj[syntax].ToString();
+                }
             }
-            return null;
+            catch(Exception ex)
+            {
+                Console.WriteLine("ERROR: Error while trying to retrieve {0} for {1}\n\tException: {2}", syntax, hwclass, ex.Message);
+            }
+            return "NULL";
         }
 
         private void button1_Click_1(object sender, EventArgs e)
