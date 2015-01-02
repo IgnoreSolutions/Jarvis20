@@ -12,6 +12,7 @@ namespace Jarvis20
         public static OSFriendly OSName()
         {
             double osVersion = double.Parse(Environment.OSVersion.Version.Major.ToString() + "." + Environment.OSVersion.Version.Minor.ToString());
+            int p = (int)Environment.OSVersion.Platform;
 
             if (osVersion == 5.0)
                 return OSFriendly.Windows2000;
@@ -25,6 +26,14 @@ namespace Jarvis20
                 return OSFriendly.Windows8;
             else if (osVersion == 6.3)
                 return OSFriendly.Windows81;
+            else if (osVersion == 6.4)
+                return OSFriendly.Windows10;
+            else if (Environment.OSVersion.VersionString.IndexOf("technical preview", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
+                return OSFriendly.Windows10;
+            else if (osVersion == 10.0)
+                return OSFriendly.Windows10;
+            else if (p == 4 || p == 6 || p == 128)
+                return OSFriendly.Linux;
             else
                 return OSFriendly.Unknown;
             

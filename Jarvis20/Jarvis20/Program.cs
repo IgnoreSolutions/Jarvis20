@@ -34,12 +34,18 @@ namespace Jarvis20
                     Application.SetCompatibleTextRenderingDefault(false);
                     Application.Run(new MainForm());
                 }
+                else if(DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Linux)
+                {
+                    MessageBox.Show("Sorry, Jarvis does function under Mono/Linux!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Environment.Exit(-1);
+                }
                 else if (osVersion < 6.0)
                 {
                     MessageBox.Show("Sorry, Jarvis does not function on Windows XP or lower. Please upgrade to use him!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Environment.Exit(-1);
                 }
             }
+
         }
     }
 }
