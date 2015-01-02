@@ -23,7 +23,15 @@ namespace Jarvis20
             else if (osVersion == 6.1)
                 return OSFriendly.Windows7;
             else if (osVersion == 6.2)
-                return OSFriendly.Windows8;
+            {
+                string osName = new Microsoft.VisualBasic.Devices.ComputerInfo().OSFullName;
+                if (osName.IndexOf("8.1", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
+                    return OSFriendly.Windows81;
+                else if (osName.IndexOf("technical preview", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
+                    return OSFriendly.Windows10;
+                else
+                    return OSFriendly.Windows8;
+            }
             else if (osVersion == 6.3)
                 return OSFriendly.Windows81;
             else if (osVersion == 6.4)
