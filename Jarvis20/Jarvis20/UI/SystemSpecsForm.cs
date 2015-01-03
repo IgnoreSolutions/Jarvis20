@@ -27,7 +27,7 @@ namespace Jarvis20
             
             Font = SystemFonts.MessageBoxFont;
             InitializeComponent();
-            if (DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows8 | DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows81)
+            if (MainForm.Win8ThemeEnabled)
                 WindowBorderColor.WindowBorderColor.InitializeWindows8Theme(this);
         }
 
@@ -83,7 +83,7 @@ namespace Jarvis20
             videoCardTextBox.Text = string.Format("{0} {1}GB ({2} MB)", vidCard, Math.Round(totalVidRam_mb / 1024f, 2), totalVidRam_mb);
             soundCardTextBox.Text = soundCard;
             moboTextBox.Text = moboIdent;
-            if (cdRom == "" || cdRom == null || cdRom.Equals(String.Empty))
+            if (cdRom == "" || cdRom == null || cdRom.Equals(String.Empty) || cdRom == "NULL")
                 cdRomTextBox.Text = "None available!";
             else
                 cdRomTextBox.Text = cdRom;
