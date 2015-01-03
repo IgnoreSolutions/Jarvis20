@@ -425,6 +425,14 @@ namespace Jarvis20
                 }
             
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+#if DEBUG
+            WindowsExperienceIndex wei = new WindowsExperienceIndex();
+            wei.ShowDialog();
+#endif
+        }
         //
     }
 }

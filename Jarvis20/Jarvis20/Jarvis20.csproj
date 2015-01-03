@@ -92,6 +92,12 @@
       <DependentUpon>SystemSpecsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WindowBorderColor.cs" />
+    <Compile Include="WindowsExperienceIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsExperienceIndex.Designer.cs">
+      <DependentUpon>WindowsExperienceIndex.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +119,9 @@
     </Compile>
     <EmbeddedResource Include="SystemSpecsForm.resx">
       <DependentUpon>SystemSpecsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowsExperienceIndex.resx">
+      <DependentUpon>WindowsExperienceIndex.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="app.manifest" />
