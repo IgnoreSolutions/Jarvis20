@@ -71,5 +71,16 @@ namespace Jarvis20
             return false;
         }
 
+        private static bool SupportsWEIThroughCP()
+        {
+            DetectOperatingSystem.OSFriendly os = DetectOperatingSystem.OSName();
+            if (os == DetectOperatingSystem.OSFriendly.Windows10 || os == DetectOperatingSystem.OSFriendly.Windows8 || os == DetectOperatingSystem.OSFriendly.Windows81)
+                return false;
+            else if(os == DetectOperatingSystem.OSFriendly.Windows7 || os == DetectOperatingSystem.OSFriendly.WindowsVista)
+                return true;
+
+            return false;
+        }
+
     }
 }

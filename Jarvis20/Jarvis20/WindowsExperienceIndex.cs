@@ -50,6 +50,20 @@ namespace Jarvis20
                 sw.Close();
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string cpu = MainForm.GetComponent("Win32_WinSAT", "CPUScore");
+            string d3d = MainForm.GetComponent("Win32_WinSAT", "D3DScore");
+            string disk = MainForm.GetComponent("Win32_WinSAT", "DiskScore");
+            string desktopGraphics = MainForm.GetComponent("Win32_WinSAT", "DiskScore");
+            string memory = MainForm.GetComponent("Win32_WinSAT", "MemoryScore");
+            string lowest = MainForm.GetComponent("Win32_WinSAT", "WinSPRLevel");
+
+            string yes = string.Format("CPU Score: {0}\nD3D Score: {1}\nDisk Score: {2}\nAero Graphics: {3}\nMemory Score: {4}\nFinal (lowest): {5}",
+                cpu, d3d, disk, desktopGraphics, memory, lowest);
+            textBox1.Text = yes;
+        }
         //
     }
 }
