@@ -26,6 +26,14 @@ namespace Jarvis20
             }
             else
             {
+#if !DEBUG
+                if(IsJarvisRunning())
+                {
+                    MessageBox.Show("It appears as though Jarvis is already running! Please close him before continuing.", "Jarvis", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Environment.Exit(-1);
+                }
+#endif
+
                 double osVersion = double.Parse(Environment.OSVersion.Version.Major.ToString() + "." + Environment.OSVersion.Version.Minor.ToString());
                 if (osVersion >= 6.0)
                 {
@@ -45,7 +53,23 @@ namespace Jarvis20
                     Environment.Exit(-1);
                 }
             }
-
         }
+
+        private static bool IsJarvisRunning()
+        {
+            Process[] proc = Process.GetProcesses();
+            foreach(var i in proc)
+            {
+                if (i.ProcessName.IndexOf("jarvis", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
+                {
+                    if (i.ProcessName.Contains("vshost"))
+                        return false;
+                    else
+                        return true;
+                }
+            }
+            return false;
+        }
+
     }
 }
