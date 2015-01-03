@@ -36,6 +36,8 @@ namespace Jarvis_WinSAT
             sw.WriteLine("GraphicsScore={0}", GraphicsScore);
             sw.WriteLine("MemoryScore={0}", MemoryScore);
             sw.WriteLine("WinSPRLevel={0}", WinSPRLevel);
+            sw.Flush();
+            sw.Close();
         }
 
         public void ReadFromFile(string input)
