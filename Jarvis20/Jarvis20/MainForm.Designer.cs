@@ -154,6 +154,7 @@
             // 
             // useWin8CheckBox
             // 
+            this.useWin8CheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.useWin8CheckBox.AutoSize = true;
             this.useWin8CheckBox.Location = new System.Drawing.Point(111, 339);
             this.useWin8CheckBox.Name = "useWin8CheckBox";

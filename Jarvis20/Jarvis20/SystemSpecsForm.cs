@@ -83,7 +83,10 @@ namespace Jarvis20
             videoCardTextBox.Text = string.Format("{0} {1}GB ({2} MB)", vidCard, Math.Round(totalVidRam_mb / 1024f, 2), totalVidRam_mb);
             soundCardTextBox.Text = soundCard;
             moboTextBox.Text = moboIdent;
-            cdRomTextBox.Text = cdRom;
+            if (cdRom == "" || cdRom == null || cdRom.Equals(String.Empty))
+                cdRomTextBox.Text = "None available!";
+            else
+                cdRomTextBox.Text = cdRom;
             monitorTextBox.Text = monitor;
             if (Environment.Is64BitOperatingSystem)
                 osTextBox.Text = osVersion + " 64-Bit";
