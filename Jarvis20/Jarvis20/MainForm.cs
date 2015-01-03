@@ -13,6 +13,8 @@ using System.IO;
 using System.Management;
 using System.Reflection;
 using WindowBorderColor;
+using Utility;
+using Utility.ModifyRegistry;
 
 namespace Jarvis20
 {
@@ -25,9 +27,11 @@ namespace Jarvis20
         public PerformanceCounter perfUptimeCount = new PerformanceCounter("System", "System Up Time"); //This monitors system up time
         bool paused = false; //Whether or not Jarvis is paused
         bool terminating = false;
+        bool appStartup = false;
 
         public MainForm()
         {
+            appStartup = true;
             Font = System.Drawing.SystemFonts.MessageBoxFont; //Sets the form's font to the system's default font
             InitializeComponent(); //Shows the form, and its components
             System.Windows.SystemParameters.StaticPropertyChanged += SystemParameters_StaticPropertyChanged;
@@ -49,14 +53,53 @@ namespace Jarvis20
                 synth.Speak(String.Format("Welcome to Jarvis version {0} point {1}, beta build", ver.Major, ver.Minor));
             }
             //
-            if (DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows8 | DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows81)
-                WindowBorderColor.WindowBorderColor.InitializeWindows8Theme(this);
+            if (DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows8 | DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows81 | DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows10)
+            { Win8Theme(); }
+            else
+                useWin8CheckBox.Enabled = false;
             //
             #endregion
+            appStartup = false;
+        }
+
+        private void Win8Theme()
+        {
+            //WindowBorderColor.WindowBorderColor.InitializeWindows8Theme(this);
+            //The theme will be enabled by default on Windows 8, 8.1, and disabled (but available) on Windows 10. So first we need to check
+            //if our reg key is null
+            ModifyRegistry mr = new ModifyRegistry();
+            bool useWin8Theme;
+            try
+            {
+                useWin8Theme = bool.Parse(mr.Read("WIN8THEME"));
+                if (useWin8Theme)
+                {
+                    WindowBorderColor.WindowBorderColor.InitializeWindows8Theme(this);
+                    useWin8CheckBox.Checked = true;
+                }
+                else
+                    useWin8CheckBox.Checked = false;
+                
+            }
+            catch //this is ok since this means we just have to create it
+            {
+                if(DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows8 | DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows81)
+                {
+                    WindowBorderColor.WindowBorderColor.InitializeWindows8Theme(this);
+                    mr.Write("WIN8THEME", true);
+                    useWin8CheckBox.Checked = true;
+                }
+                else if(DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows10)
+                {
+                    mr.Write("WIN8THEME", false);
+                    useWin8CheckBox.Checked = false;
+                }
+            }
         }
 
         void SystemParameters_StaticPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            string prop = e.PropertyName;
             if(e.PropertyName == "WindowGlassBrush")
             {
                 WindowBorderColor.WindowBorderColor.InitializeWindows8Theme(this);
@@ -242,9 +285,21 @@ namespace Jarvis20
                         Application.Exit();
                         break;
                     case (DialogResult.Cancel):
-                        //do nothing
+                        e.Cancel = true;
                         break;
                 }
+            }
+        }
+
+        public static bool Win8ThemeEnabled
+        {
+            get
+            {
+                try
+                {
+                    return bool.Parse(new ModifyRegistry().Read("WIN8THEME"));
+                }
+                catch { return false; }
             }
         }
 
@@ -345,6 +400,30 @@ namespace Jarvis20
                 this.Visible = true; 
                 notifyIcon.Visible = false; 
             }
+        }
+
+        private void useWin8CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+                bool useWin8Theme = bool.Parse(new ModifyRegistry().Read("WIN8THEME"));
+                if (useWin8Theme)
+                {
+                    useWin8CheckBox.Checked = false;
+                    new ModifyRegistry().Write("WIN8THEME", false);
+                    if(!appStartup)
+                        MessageBox.Show("Theme changes will take effect on next application start.", "Jarvis", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    useWin8CheckBox.Checked = true;
+                    new ModifyRegistry().Write("WIN8THEME", true);
+                    try
+                    {
+                        WindowBorderColor.WindowBorderColor.InitializeWindows8Theme(this);
+                    }
+                    catch
+                    { }
+                }
+            
         }
         //
     }

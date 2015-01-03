@@ -41,6 +41,7 @@
             this.Specs_Button = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.useWin8CheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // listView1
@@ -151,12 +152,24 @@
             this.notifyIcon.Text = "Jarvis";
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
+            // useWin8CheckBox
+            // 
+            this.useWin8CheckBox.AutoSize = true;
+            this.useWin8CheckBox.Location = new System.Drawing.Point(111, 339);
+            this.useWin8CheckBox.Name = "useWin8CheckBox";
+            this.useWin8CheckBox.Size = new System.Drawing.Size(137, 17);
+            this.useWin8CheckBox.TabIndex = 8;
+            this.useWin8CheckBox.Text = "Use Windows 8 Theme";
+            this.useWin8CheckBox.UseVisualStyleBackColor = true;
+            this.useWin8CheckBox.CheckedChanged += new System.EventHandler(this.useWin8CheckBox_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(656, 368);
+            this.Controls.Add(this.useWin8CheckBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Specs_Button);
             this.Controls.Add(this.writeToLogFile);
@@ -188,6 +201,7 @@
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.CheckBox useWin8CheckBox;
     }
 }
 
