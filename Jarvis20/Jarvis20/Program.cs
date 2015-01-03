@@ -62,7 +62,7 @@ namespace Jarvis20
             {
                 if (i.ProcessName.IndexOf("jarvis", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
                 {
-                    if (i.ProcessName.Contains("vshost"))
+                    if (i.ProcessName.IndexOf("vshost", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
                         return false;
                     else
                         return true;
