@@ -29,8 +29,11 @@ namespace Jarvis20
 #if !DEBUG
                 if(IsJarvisRunning())
                 {
-                    MessageBox.Show("It appears as though Jarvis is already running! Please close him before continuing.", "Jarvis", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Environment.Exit(-1);
+                    DialogResult dr = MessageBox.Show("It appears as though Jarvis is already running! Would you like to try killing the process?\nAnswering no will close this instance.", "Jarvis", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                    if (dr == DialogResult.Yes)
+                        TryKillJarvis();
+                    else
+                        Environment.Exit(-1);
                 }
 #endif
 
@@ -69,6 +72,31 @@ namespace Jarvis20
                 }
             }
             return false;
+        }
+
+        private static void TryKillJarvis()
+        {
+            Process[] proc = Process.GetProcesses();
+            foreach (var i in proc)
+            {
+                if (i.ProcessName.IndexOf("jarvis", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
+                {
+                    if (i.ProcessName.IndexOf("vshost", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
+                    { }
+                    else
+                    {
+                        try
+                        {
+                            i.Kill();
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show("Error trying to kill the process!\n\n" + ex.Message, "Jarvis", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Environment.Exit(-1);
+                        }
+                    }
+                }
+            }
         }
 
         public static bool SupportsWEIThroughCP()
