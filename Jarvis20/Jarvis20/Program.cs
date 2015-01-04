@@ -26,7 +26,7 @@ namespace Jarvis20
             }
             else
             {
-#if !DEBUG
+#if IMABOSSASSBITCH
                 if(IsJarvisRunning())
                 {
                     DialogResult dr = MessageBox.Show("It appears as though Jarvis is already running! Would you like to try killing the process?\nAnswering no will close this instance.", "Jarvis", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
