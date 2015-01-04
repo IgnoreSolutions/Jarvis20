@@ -27,11 +27,6 @@ namespace Jarvis_WinSAT
             WinSPRLevel = decimal.Parse(GetComponent("Win32_WinSAT", "WinSPRLevel"));
         }
 
-        public WinSATObject(string fileToRead)
-        {
-            ReadFromFile(fileToRead);
-        }
-
         public void WriteToFile(string dest)
         {
             StreamWriter sw = new StreamWriter(dest);
