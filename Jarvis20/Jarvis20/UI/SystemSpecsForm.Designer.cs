@@ -54,6 +54,7 @@
             this.procTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
+            this.wei = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.graphicsPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.procPictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -118,7 +119,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(69, 214);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(443, 281);
+            this.groupBox1.Size = new System.Drawing.Size(443, 280);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "System Specifications";
@@ -126,7 +127,7 @@
             // osTextBox
             // 
             this.osTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.osTextBox.Location = new System.Drawing.Point(102, 243);
+            this.osTextBox.Location = new System.Drawing.Point(102, 242);
             this.osTextBox.Name = "osTextBox";
             this.osTextBox.ReadOnly = true;
             this.osTextBox.Size = new System.Drawing.Size(335, 20);
@@ -136,7 +137,7 @@
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(70, 246);
+            this.label10.Location = new System.Drawing.Point(70, 245);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(25, 13);
             this.label10.TabIndex = 21;
@@ -145,7 +146,7 @@
             // ramTextBox
             // 
             this.ramTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.ramTextBox.Location = new System.Drawing.Point(102, 83);
+            this.ramTextBox.Location = new System.Drawing.Point(102, 82);
             this.ramTextBox.Name = "ramTextBox";
             this.ramTextBox.ReadOnly = true;
             this.ramTextBox.Size = new System.Drawing.Size(335, 20);
@@ -155,7 +156,7 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(35, 86);
+            this.label9.Location = new System.Drawing.Point(35, 85);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 13);
             this.label9.TabIndex = 19;
@@ -164,7 +165,7 @@
             // cdRomTextBox
             // 
             this.cdRomTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cdRomTextBox.Location = new System.Drawing.Point(102, 187);
+            this.cdRomTextBox.Location = new System.Drawing.Point(102, 186);
             this.cdRomTextBox.Name = "cdRomTextBox";
             this.cdRomTextBox.ReadOnly = true;
             this.cdRomTextBox.Size = new System.Drawing.Size(335, 20);
@@ -174,7 +175,7 @@
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(45, 190);
+            this.label8.Location = new System.Drawing.Point(45, 189);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(50, 13);
             this.label8.TabIndex = 17;
@@ -183,7 +184,7 @@
             // networkTextBox
             // 
             this.networkTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.networkTextBox.Location = new System.Drawing.Point(102, 31);
+            this.networkTextBox.Location = new System.Drawing.Point(102, 30);
             this.networkTextBox.Name = "networkTextBox";
             this.networkTextBox.ReadOnly = true;
             this.networkTextBox.Size = new System.Drawing.Size(335, 20);
@@ -193,7 +194,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 34);
+            this.label6.Location = new System.Drawing.Point(6, 33);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(90, 13);
             this.label6.TabIndex = 15;
@@ -202,7 +203,7 @@
             // monitorTextBox
             // 
             this.monitorTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.monitorTextBox.Location = new System.Drawing.Point(102, 215);
+            this.monitorTextBox.Location = new System.Drawing.Point(102, 214);
             this.monitorTextBox.Name = "monitorTextBox";
             this.monitorTextBox.ReadOnly = true;
             this.monitorTextBox.Size = new System.Drawing.Size(335, 20);
@@ -212,7 +213,7 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(52, 218);
+            this.label7.Location = new System.Drawing.Point(52, 217);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 13);
             this.label7.TabIndex = 13;
@@ -221,7 +222,7 @@
             // moboTextBox
             // 
             this.moboTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.moboTextBox.Location = new System.Drawing.Point(102, 161);
+            this.moboTextBox.Location = new System.Drawing.Point(102, 160);
             this.moboTextBox.Name = "moboTextBox";
             this.moboTextBox.ReadOnly = true;
             this.moboTextBox.Size = new System.Drawing.Size(335, 20);
@@ -231,7 +232,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 164);
+            this.label4.Location = new System.Drawing.Point(27, 163);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 13);
             this.label4.TabIndex = 11;
@@ -240,7 +241,7 @@
             // soundCardTextBox
             // 
             this.soundCardTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.soundCardTextBox.Location = new System.Drawing.Point(102, 135);
+            this.soundCardTextBox.Location = new System.Drawing.Point(102, 134);
             this.soundCardTextBox.Name = "soundCardTextBox";
             this.soundCardTextBox.ReadOnly = true;
             this.soundCardTextBox.Size = new System.Drawing.Size(335, 20);
@@ -250,7 +251,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 138);
+            this.label5.Location = new System.Drawing.Point(31, 137);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 13);
             this.label5.TabIndex = 9;
@@ -259,7 +260,7 @@
             // videoCardTextBox
             // 
             this.videoCardTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.videoCardTextBox.Location = new System.Drawing.Point(102, 109);
+            this.videoCardTextBox.Location = new System.Drawing.Point(102, 108);
             this.videoCardTextBox.Name = "videoCardTextBox";
             this.videoCardTextBox.ReadOnly = true;
             this.videoCardTextBox.Size = new System.Drawing.Size(335, 20);
@@ -269,7 +270,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 112);
+            this.label3.Location = new System.Drawing.Point(35, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 7;
@@ -278,7 +279,7 @@
             // procTextBox
             // 
             this.procTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.procTextBox.Location = new System.Drawing.Point(102, 57);
+            this.procTextBox.Location = new System.Drawing.Point(102, 56);
             this.procTextBox.Name = "procTextBox";
             this.procTextBox.ReadOnly = true;
             this.procTextBox.Size = new System.Drawing.Size(335, 20);
@@ -288,7 +289,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 60);
+            this.label2.Location = new System.Drawing.Point(40, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 5;
@@ -298,20 +299,33 @@
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.okButton.Location = new System.Drawing.Point(417, 501);
+            this.okButton.Location = new System.Drawing.Point(439, 500);
             this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(95, 49);
+            this.okButton.Size = new System.Drawing.Size(73, 30);
             this.okButton.TabIndex = 6;
             this.okButton.Text = "Ok";
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // wei
+            // 
+            this.wei.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.wei.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.wei.Location = new System.Drawing.Point(294, 500);
+            this.wei.Name = "wei";
+            this.wei.Size = new System.Drawing.Size(139, 30);
+            this.wei.TabIndex = 7;
+            this.wei.Text = "Windows Experience Index";
+            this.wei.UseVisualStyleBackColor = true;
+            this.wei.Click += new System.EventHandler(this.wei_Click);
             // 
             // SystemSpecsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(597, 562);
+            this.ClientSize = new System.Drawing.Size(597, 561);
+            this.Controls.Add(this.wei);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -357,5 +371,6 @@
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.TextBox osTextBox;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button wei;
     }
 }

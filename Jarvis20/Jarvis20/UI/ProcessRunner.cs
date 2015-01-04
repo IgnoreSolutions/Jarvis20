@@ -37,6 +37,7 @@ namespace Jarvis20.UI
 
         private void Run()
         {
+            procOutputLabel.Text = "Waiting..";
             Thread.Sleep(3000);
             procOutputLabel.Text = "Ready?";
             if (_p != null)
@@ -50,12 +51,26 @@ namespace Jarvis20.UI
                     _p.Start();
                     while (!_p.StandardOutput.EndOfStream)
                     {
-                        procOutputLabel.Text = _p.StandardOutput.ReadLine();
+                        string outt = _p.StandardOutput.ReadLine();
+                        if (outt == "Press enter to exit..")
+                        {
+                            _p.Kill();
+                            break;
+                        }
+                        else if (outt.IndexOf("ERROR", 0, StringComparison.CurrentCultureIgnoreCase) != -1)
+                        {
+                            MessageBox.Show("An error occurred while running the process!\n\nError Message: " + outt, "Jarvis", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            _p.Kill();
+                            this.DialogResult = DialogResult.Abort;
+                            this.Close();
+                        }
+                        procOutputLabel.Text = outt;
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("An error ocurred while running the process!\n\nError Message: " + ex.Message, "Jarvis", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _p.Kill();
                     this.DialogResult = DialogResult.Abort;
                     this.Close();
                 }

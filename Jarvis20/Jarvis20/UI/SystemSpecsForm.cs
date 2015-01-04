@@ -157,6 +157,17 @@ namespace Jarvis20
 
             return null;
         }
+
+        private void wei_Click(object sender, EventArgs e)
+        {
+            if (Program.SupportsWEIThroughCP())
+                MessageBox.Show("Your operating system supports Windows Experience Index viewing through the Control Pane.\nPlease check from there.", "Jarvis", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+            {
+                WindowsExperienceIndex wei = new WindowsExperienceIndex();
+                wei.ShowDialog();
+            }
+        }
         //
     }
 }

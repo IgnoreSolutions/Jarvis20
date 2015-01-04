@@ -42,7 +42,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.useWin8CheckBox = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -165,23 +164,12 @@
             this.useWin8CheckBox.UseVisualStyleBackColor = true;
             this.useWin8CheckBox.CheckedChanged += new System.EventHandler(this.useWin8CheckBox_CheckedChanged);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(279, 266);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "wei";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(656, 368);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.useWin8CheckBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Specs_Button);
@@ -215,7 +203,6 @@
         public System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.CheckBox useWin8CheckBox;
-        private System.Windows.Forms.Button button2;
     }
 }
 

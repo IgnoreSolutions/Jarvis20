@@ -16,8 +16,8 @@ namespace Jarvis20
 {
     public partial class WindowsExperienceIndex : Form
     {
-        private const string Jarvis_WinSATx64 = "https://github.com/MikeSantiagoInc/Jarvis20/releases/download/v0.1-jarsat/Jarvis_WinSAT-x64.exe";
-        private const string Jarvis_WinSATx86 = "https://github.com/MikeSantiagoInc/Jarvis20/releases/download/v0.1-jarsat/Jarvis_WinSAT-x86.exe";
+        private const string Jarvis_WinSATx64 = "https://github.com/MikeSantiagoInc/Jarvis20/releases/download/v0.1.1-jarsat/Jarvis_WinSATx64.exe";
+        private const string Jarvis_WinSATx86 = "https://github.com/MikeSantiagoInc/Jarvis20/releases/download/v0.1.1-jarsat/Jarvis_WinSATx86.exe";
         private WinSATObject w;
 
         public WindowsExperienceIndex()
