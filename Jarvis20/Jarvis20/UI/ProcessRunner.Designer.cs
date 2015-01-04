@@ -1,6 +1,6 @@
 ﻿namespace Jarvis20.UI
 {
-    partial class Downloader
+    partial class ProcessRunner
     {
         /// <summary>
         /// Required designer variable.
@@ -28,41 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.statusLabel = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.procOutputLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // progressBar
+            // progressBar1
             // 
-            this.progressBar.Location = new System.Drawing.Point(12, 12);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(408, 23);
-            this.progressBar.TabIndex = 0;
+            this.progressBar1.Location = new System.Drawing.Point(12, 12);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(417, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 0;
             // 
-            // statusLabel
+            // procOutputLabel
             // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(13, 58);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(138, 13);
-            this.statusLabel.TabIndex = 1;
-            this.statusLabel.Text = "Downloading file from \'{0}\'...";
+            this.procOutputLabel.AutoSize = true;
+            this.procOutputLabel.Location = new System.Drawing.Point(12, 54);
+            this.procOutputLabel.Name = "procOutputLabel";
+            this.procOutputLabel.Size = new System.Drawing.Size(60, 13);
+            this.procOutputLabel.TabIndex = 1;
+            this.procOutputLabel.Text = "procOutput";
             // 
-            // Downloader
+            // ProcessRunner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(433, 83);
-            this.Controls.Add(this.statusLabel);
-            this.Controls.Add(this.progressBar);
+            this.ClientSize = new System.Drawing.Size(442, 80);
+            this.Controls.Add(this.procOutputLabel);
+            this.Controls.Add(this.progressBar1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Downloader";
+            this.Name = "ProcessRunner";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Downloading...";
+            this.Text = "Running...";
+            this.Load += new System.EventHandler(this.ProcessRunner_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -70,7 +73,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label procOutputLabel;
     }
 }

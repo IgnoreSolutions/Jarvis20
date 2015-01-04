@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,17 @@ namespace Jarvis_WinSAT
     {
         const int ERROR_CANCELLED = 1223;
 
+        [DllImport("user32.dll")]
+        public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        public const int SW_SHOWMINIMIZED = 2;
+
+        static IntPtr winHandle = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
+
         public static void Main(string[] args)
         {
+            ShowWindow(winHandle, SW_SHOWMINIMIZED);
+
             if (Environment.Is64BitProcess)
             { 
                 Console.WriteLine("x64 Build\n"); 
@@ -53,6 +63,7 @@ namespace Jarvis_WinSAT
                         Process p = new Process();
                         p.StartInfo.FileName = Environment.SystemDirectory + "\\WinSAT.exe";
                         p.StartInfo.Arguments = "prepop";
+                        p.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
                         p.StartInfo.UseShellExecute = true;
                         p.StartInfo.Verb = "runas";
                         if (File.Exists(Environment.SystemDirectory + "\\WinSAT.exe"))
@@ -91,6 +102,7 @@ namespace Jarvis_WinSAT
                         Process p = new Process();
                         p.StartInfo.FileName = Environment.SystemDirectory + "\\WinSAT.exe";
                         p.StartInfo.Arguments = "formal";
+                        p.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
                         p.StartInfo.UseShellExecute = true;
                         p.StartInfo.Verb = "runas";
                         if (File.Exists(Environment.SystemDirectory + "\\WinSAT.exe"))
@@ -129,6 +141,7 @@ namespace Jarvis_WinSAT
                     {
                         Process p = new Process();
                         p.StartInfo.FileName = Environment.SystemDirectory + "\\WinSAT.exe";
+                        p.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
                         p.StartInfo.Arguments = "prepop";
                         p.StartInfo.UseShellExecute = true;
                         p.StartInfo.Verb = "runas";
@@ -148,23 +161,6 @@ namespace Jarvis_WinSAT
                         }
                         WinSATObject w = new WinSATObject();
                         w.WriteToFile(Environment.CurrentDirectory + "\\output.sat");
-                    }
-                    catch (Win32Exception ex)
-                    {
-                        if (ex.HResult == ERROR_CANCELLED)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("ERROR: User denied UAC Access");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Environment.Exit(-1);
-                        }
-                        else
-                            throw;
-                    }
-                    try
-                    {
-                        if (File.Exists(Environment.SystemDirectory + @"\WinSAT.exe"))
-                            Process.Start(Environment.SystemDirectory + "\\WinSAT.exe", "formal");
                     }
                     catch (Win32Exception ex)
                     {

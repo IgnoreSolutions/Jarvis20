@@ -45,35 +45,69 @@ namespace Jarvis20
                 }
             }
         }
-
+        private void LoadEvents()
+        {
+            w = new WinSATObject();
+            if (w.CPUScore == (decimal)0.0 || w.CPUScore == 0)
+            {
+                MessageBox.Show("WinSAT cannot generate a score on this system", "Jarvis", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
+            else
+            {
+                Label[] lbls = new Label[] { cpuScoreLabel, ramScoreLabel, d3dScoreLabel, desktopGraphicsLabel, diskScoreLabel };
+                cpuScoreLabel.Text = w.CPUScore.ToString();
+                ramScoreLabel.Text = w.MemoryScore.ToString();
+                d3dScoreLabel.Text = w.D3DScore.ToString();
+                desktopGraphicsLabel.Text = w.GraphicsScore.ToString();
+                diskScoreLabel.Text = w.DiskScore.ToString();
+                foreach (var i in lbls)
+                {
+                    if (i.Text == w.WinSPRLevel.ToString())
+                        i.Font = new Font(i.Font.Name, i.Font.Size, FontStyle.Underline);
+                }
+            }
+        }
         private void RunWinSATTool()
         {
-            DialogResult dr = MessageBox.Show("In order to run the System Assessment Tool, we will need to download an external utility developed by us. Would you like to do this now?", 
-                "Jarvis", 
-                MessageBoxButtons.YesNoCancel, 
-                MessageBoxIcon.Question);
-            if (dr == DialogResult.Yes)
+            bool run = false;
+            if (File.Exists(Environment.CurrentDirectory + Path.DirectorySeparatorChar + "Jarvis_WinSAT.exe"))
+                run = true;
+            if (!File.Exists(Environment.CurrentDirectory + Path.DirectorySeparatorChar + "Jarvis_WinSAT.exe"))
             {
-                if (Environment.Is64BitOperatingSystem)
+                DialogResult dr = MessageBox.Show("In order to run the System Assessment Tool, we will need to download an external utility developed by us. Would you like to do this now?",
+                    "Jarvis",
+                    MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
                 {
-                    //download 64-bit jarvis winsat
-                    //Remember: exit code of -2 means wrong architecture
-                    //Exit code of -1 means WinSAT wasn't found or the user didn't allow WinSAT to run which isn't as big of a deal as -2
-                    if (!File.Exists(Environment.CurrentDirectory + Path.DirectorySeparatorChar + "Jarvis_WinSAT.exe"))
+                    if (Environment.Is64BitOperatingSystem)
                     {
-                        Downloader d = new Downloader(Jarvis_WinSATx64, Environment.CurrentDirectory + Path.DirectorySeparatorChar + "Jarvis_WinSAT.exe");
-                        d.ShowDialog();
+                        //download 64-bit jarvis winsat
+                        //Remember: exit code of -2 means wrong architecture
+                        //Exit code of -1 means WinSAT wasn't found or the user didn't allow WinSAT to run which isn't as big of a deal as -2
+                        if (!File.Exists(Environment.CurrentDirectory + Path.DirectorySeparatorChar + "Jarvis_WinSAT.exe"))
+                        {
+                            Downloader d = new Downloader(Jarvis_WinSATx64, "Jarvis_WinSAT.exe");
+                            d.ShowDialog();
+                            run = true;
+                        }
+                    }
+                    else
+                    {
+                        if (!File.Exists(Environment.CurrentDirectory + Path.DirectorySeparatorChar + "Jarvis_WinSAT.exe"))
+                        {
+                            Downloader d = new Downloader(Jarvis_WinSATx86, Environment.CurrentDirectory + Path.DirectorySeparatorChar + "Jarvis_WinSAT.exe");
+                            d.ShowDialog();
+                            run = true;
+                        }
                     }
                 }
-                else
-                {
-                    if (!File.Exists(Environment.CurrentDirectory + Path.DirectorySeparatorChar + "Jarvis_WinSAT.exe"))
-                    {
-                        Downloader d = new Downloader(Jarvis_WinSATx86, Environment.CurrentDirectory + Path.DirectorySeparatorChar + "Jarvis_WinSAT.exe");
-                        d.ShowDialog();
-                    }
-                }
-
+                else if (dr == DialogResult.No)
+                    run = false;
+            }
+            if (run)
+            {
                 Process p = new Process();
                 p.StartInfo.FileName = Environment.CurrentDirectory + Path.DirectorySeparatorChar + "Jarvis_WinSAT.exe";
                 p.StartInfo.UseShellExecute = true;
@@ -81,7 +115,18 @@ namespace Jarvis20
                 p.StartInfo.Arguments = "-prepop_formal";
                 try
                 {
-
+                    ProcessRunner pr = new ProcessRunner(p, "Windows Performance Assessment Test");
+                    DialogResult ddr = pr.ShowDialog();
+                    switch (ddr)
+                    {
+                        case (DialogResult.OK):
+                            LoadEvents();
+                            break;
+                        case (DialogResult.Abort):
+                            MessageBox.Show("The operation was aborted!", "Jarvis", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Close();
+                            break;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -126,6 +171,11 @@ namespace Jarvis20
             {
                 e.Graphics.DrawString(w.WinSPRLevel.ToString(), f, Brushes.White, new Point((overallRating.Size.Width/2)/2/2, (overallRating.Size.Height/2)/2/2));
             }
+        }
+
+        private void reRunButton_Click(object sender, EventArgs e)
+        {
+            RunWinSATTool();
         }
         //
     }

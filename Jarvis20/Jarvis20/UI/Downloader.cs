@@ -23,6 +23,7 @@ namespace Jarvis20.UI
             _url = url;
             _fileName = fileName;
             InitializeComponent();
+            startDownload();
         }
 
         private void startDownload()

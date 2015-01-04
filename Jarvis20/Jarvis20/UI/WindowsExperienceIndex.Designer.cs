@@ -31,6 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WindowsExperienceIndex));
             this.overallRating = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.diskScoreLabel = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.d3dScoreLabel = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.desktopGraphicsLabel = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.ramScoreLabel = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cpuScoreLabel = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,21 +49,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cpuScoreLabel = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.ramScoreLabel = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.desktopGraphicsLabel = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.d3dScoreLabel = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.diskScoreLabel = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
+            this.reRunButton = new Jarvis20.UI.ElevatedButton();
             ((System.ComponentModel.ISupportInitialize)(this.overallRating)).BeginInit();
             this.tableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -107,6 +108,96 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
             this.tableLayoutPanel.Size = new System.Drawing.Size(490, 198);
             this.tableLayoutPanel.TabIndex = 1;
+            // 
+            // diskScoreLabel
+            // 
+            this.diskScoreLabel.AutoSize = true;
+            this.diskScoreLabel.Location = new System.Drawing.Point(331, 138);
+            this.diskScoreLabel.Name = "diskScoreLabel";
+            this.diskScoreLabel.Size = new System.Drawing.Size(22, 13);
+            this.diskScoreLabel.TabIndex = 16;
+            this.diskScoreLabel.Text = "0.0";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(167, 138);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(111, 13);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "Disk data transfer rate";
+            // 
+            // d3dScoreLabel
+            // 
+            this.d3dScoreLabel.AutoSize = true;
+            this.d3dScoreLabel.Location = new System.Drawing.Point(331, 96);
+            this.d3dScoreLabel.Name = "d3dScoreLabel";
+            this.d3dScoreLabel.Size = new System.Drawing.Size(22, 13);
+            this.d3dScoreLabel.TabIndex = 7;
+            this.d3dScoreLabel.Text = "0.0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(167, 96);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(155, 26);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "3D Gaming/Business Graphics Performance";
+            // 
+            // desktopGraphicsLabel
+            // 
+            this.desktopGraphicsLabel.AutoSize = true;
+            this.desktopGraphicsLabel.Location = new System.Drawing.Point(331, 67);
+            this.desktopGraphicsLabel.Name = "desktopGraphicsLabel";
+            this.desktopGraphicsLabel.Size = new System.Drawing.Size(22, 13);
+            this.desktopGraphicsLabel.TabIndex = 13;
+            this.desktopGraphicsLabel.Text = "0.0";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(167, 67);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(149, 13);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "Desktop performance for Aero";
+            // 
+            // ramScoreLabel
+            // 
+            this.ramScoreLabel.AutoSize = true;
+            this.ramScoreLabel.Location = new System.Drawing.Point(331, 44);
+            this.ramScoreLabel.Name = "ramScoreLabel";
+            this.ramScoreLabel.Size = new System.Drawing.Size(22, 13);
+            this.ramScoreLabel.TabIndex = 11;
+            this.ramScoreLabel.Text = "0.0";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(167, 44);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(152, 13);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Memory operations per second";
+            // 
+            // cpuScoreLabel
+            // 
+            this.cpuScoreLabel.AutoSize = true;
+            this.cpuScoreLabel.Location = new System.Drawing.Point(331, 21);
+            this.cpuScoreLabel.Name = "cpuScoreLabel";
+            this.cpuScoreLabel.Size = new System.Drawing.Size(22, 13);
+            this.cpuScoreLabel.TabIndex = 9;
+            this.cpuScoreLabel.Text = "0.0";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(167, 21);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(120, 13);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Calculations per second";
             // 
             // label1
             // 
@@ -188,96 +279,6 @@
             this.label8.TabIndex = 7;
             this.label8.Text = "Subscore";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(167, 21);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(120, 13);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Calculations per second";
-            // 
-            // cpuScoreLabel
-            // 
-            this.cpuScoreLabel.AutoSize = true;
-            this.cpuScoreLabel.Location = new System.Drawing.Point(331, 21);
-            this.cpuScoreLabel.Name = "cpuScoreLabel";
-            this.cpuScoreLabel.Size = new System.Drawing.Size(22, 13);
-            this.cpuScoreLabel.TabIndex = 9;
-            this.cpuScoreLabel.Text = "0.0";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(167, 44);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(152, 13);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Memory operations per second";
-            // 
-            // ramScoreLabel
-            // 
-            this.ramScoreLabel.AutoSize = true;
-            this.ramScoreLabel.Location = new System.Drawing.Point(331, 44);
-            this.ramScoreLabel.Name = "ramScoreLabel";
-            this.ramScoreLabel.Size = new System.Drawing.Size(22, 13);
-            this.ramScoreLabel.TabIndex = 11;
-            this.ramScoreLabel.Text = "0.0";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(167, 67);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(149, 13);
-            this.label11.TabIndex = 12;
-            this.label11.Text = "Desktop performance for Aero";
-            // 
-            // desktopGraphicsLabel
-            // 
-            this.desktopGraphicsLabel.AutoSize = true;
-            this.desktopGraphicsLabel.Location = new System.Drawing.Point(331, 67);
-            this.desktopGraphicsLabel.Name = "desktopGraphicsLabel";
-            this.desktopGraphicsLabel.Size = new System.Drawing.Size(22, 13);
-            this.desktopGraphicsLabel.TabIndex = 13;
-            this.desktopGraphicsLabel.Text = "0.0";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(167, 96);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(155, 26);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "3D Gaming/Business Graphics Performance";
-            // 
-            // d3dScoreLabel
-            // 
-            this.d3dScoreLabel.AutoSize = true;
-            this.d3dScoreLabel.Location = new System.Drawing.Point(331, 96);
-            this.d3dScoreLabel.Name = "d3dScoreLabel";
-            this.d3dScoreLabel.Size = new System.Drawing.Size(22, 13);
-            this.d3dScoreLabel.TabIndex = 7;
-            this.d3dScoreLabel.Text = "0.0";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(167, 138);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(111, 13);
-            this.label15.TabIndex = 15;
-            this.label15.Text = "Disk data transfer rate";
-            // 
-            // diskScoreLabel
-            // 
-            this.diskScoreLabel.AutoSize = true;
-            this.diskScoreLabel.Location = new System.Drawing.Point(331, 138);
-            this.diskScoreLabel.Name = "diskScoreLabel";
-            this.diskScoreLabel.Size = new System.Drawing.Size(22, 13);
-            this.diskScoreLabel.TabIndex = 16;
-            this.diskScoreLabel.Text = "0.0";
-            // 
             // label14
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -337,12 +338,25 @@
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
             // 
+            // reRunButton
+            // 
+            this.reRunButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.reRunButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.reRunButton.Location = new System.Drawing.Point(346, 310);
+            this.reRunButton.Name = "reRunButton";
+            this.reRunButton.Size = new System.Drawing.Size(153, 29);
+            this.reRunButton.TabIndex = 11;
+            this.reRunButton.Text = "Re-run the asessment";
+            this.reRunButton.UseVisualStyleBackColor = true;
+            this.reRunButton.Click += new System.EventHandler(this.reRunButton_Click);
+            // 
             // WindowsExperienceIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(604, 351);
+            this.Controls.Add(this.reRunButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
@@ -392,5 +406,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button okButton;
+        private UI.ElevatedButton reRunButton;
     }
 }
