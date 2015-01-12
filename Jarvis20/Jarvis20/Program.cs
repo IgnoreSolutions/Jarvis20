@@ -26,17 +26,6 @@ namespace Jarvis20
             }
             else
             {
-#if !DEBUG
-                if(IsJarvisRunning())
-                {
-                    DialogResult dr = MessageBox.Show("It appears as though Jarvis is already running! Would you like to try killing the process?\nAnswering no will close this instance.", "Jarvis", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-                    if (dr == DialogResult.Yes)
-                        TryKillJarvis();
-                    else
-                        Environment.Exit(-1);
-                }
-#endif
-
                 double osVersion = double.Parse(Environment.OSVersion.Version.Major.ToString() + "." + Environment.OSVersion.Version.Minor.ToString());
                 if (osVersion >= 6.0)
                 {

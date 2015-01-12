@@ -44,13 +44,19 @@ namespace Jarvis20
             #region Platform specific code
             if(DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows7)
             {
-                this.Text = String.Format("Jarvette {0}.{1} Beta Build", ver.Major, ver.Minor);
-                synth.Speak(String.Format("Welcome to Jarvette version {0} point {1}, beta build", ver.Major, ver.Minor));
+                this.Text = String.Format("Jarvette {0}.{1}", ver.Major, ver.Minor);
+                if(ver.Minor == 0)
+                    synth.Speak(String.Format("Welcome to Jarvette version {0} point ohh", ver.Major));
+                else
+                    synth.Speak(String.Format("Welcome to Jarvette version {0} point {1}", ver.Major, ver.Minor));
             }
             else
             {
-                this.Text = String.Format("Jarvis {0}.{1} Beta Build", ver.Major, ver.Minor); //Changes the window's title text to the current version number.
-                synth.Speak(String.Format("Welcome to Jarvis version {0} point {1}, beta build", ver.Major, ver.Minor));
+                this.Text = String.Format("Jarvis {0}.{1}", ver.Major, ver.Minor); //Changes the window's title text to the current version number.
+                if (ver.Minor == 0)
+                    synth.Speak(String.Format("Welcome to Jarvis version {0} point ohh", ver.Major));
+                else
+                    synth.Speak(String.Format("Welcome to Jarvis version {0} point {1}", ver.Major, ver.Minor));
             }
             //
             if (DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows8 | DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows81 | DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Windows10)
