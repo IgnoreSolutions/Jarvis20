@@ -65,7 +65,9 @@ namespace Jarvis20
             {
                 WEIONLY = true;
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new WindowsExperienceIndex());
+                WindowsExperienceIndex wei = new WindowsExperienceIndex();
+                wei.Icon = Properties.Resources.wei_icon;
+                Application.Run(wei);
             }
         }
 

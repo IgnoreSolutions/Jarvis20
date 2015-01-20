@@ -189,6 +189,7 @@
     <Content Include="README.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="resources\wei_icon.ico" />
     <None Include="resources\unknown.png" />
     <None Include="resources\ati_radeon_logo.png" />
     <None Include="resources\intel_graphics.png" />
