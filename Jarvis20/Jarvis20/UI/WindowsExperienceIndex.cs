@@ -177,6 +177,18 @@ namespace Jarvis20
         {
             RunWinSATTool();
         }
+
+        private void WindowsExperienceIndex_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Program.WEIONLY)
+                Environment.Exit(0);
+        }
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            if (Program.WEIONLY)
+                Environment.Exit(0);
+        }
         //
     }
 }

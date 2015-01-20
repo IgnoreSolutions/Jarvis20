@@ -12,6 +12,8 @@ namespace Jarvis20
 {
     static class Program
     {
+        public static bool WEIONLY = false;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -31,8 +33,13 @@ namespace Jarvis20
                 {
                     if (!args.Contains("-nostyling"))
                         Application.EnableVisualStyles();
-                    Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new MainForm());
+                    if (args.Contains("-wei"))
+                        RunStrictlyWEI();
+                    else
+                    {
+                        Application.SetCompatibleTextRenderingDefault(false);
+                        Application.Run(new MainForm());
+                    }
                 }
                 else if(DetectOperatingSystem.OSName() == DetectOperatingSystem.OSFriendly.Linux)
                 {
@@ -44,6 +51,21 @@ namespace Jarvis20
                     MessageBox.Show("Sorry, Jarvis does not function on Windows XP or lower. Please upgrade to use him!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Environment.Exit(-1);
                 }
+            }
+        }
+
+        private static void RunStrictlyWEI()
+        {
+            if(SupportsWEIThroughCP())
+            {
+                MessageBox.Show("Please view your Windows Experience Scores through Control Panel", "Jarvis", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Environment.Exit(0);
+            }
+            else
+            {
+                WEIONLY = true;
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new WindowsExperienceIndex());
             }
         }
 

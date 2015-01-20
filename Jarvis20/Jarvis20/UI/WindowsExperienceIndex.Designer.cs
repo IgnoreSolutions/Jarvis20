@@ -54,6 +54,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             this.reRunButton = new Jarvis20.UI.ElevatedButton();
             ((System.ComponentModel.ISupportInitialize)(this.overallRating)).BeginInit();
             this.tableLayoutPanel.SuspendLayout();
@@ -64,7 +65,7 @@
             this.overallRating.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.overallRating.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
-            this.overallRating.Location = new System.Drawing.Point(508, 106);
+            this.overallRating.Location = new System.Drawing.Point(508, 110);
             this.overallRating.Name = "overallRating";
             this.overallRating.Size = new System.Drawing.Size(84, 81);
             this.overallRating.TabIndex = 0;
@@ -97,7 +98,7 @@
             this.tableLayoutPanel.Controls.Add(this.label6, 0, 5);
             this.tableLayoutPanel.Controls.Add(this.label7, 1, 0);
             this.tableLayoutPanel.Controls.Add(this.label8, 2, 0);
-            this.tableLayoutPanel.Location = new System.Drawing.Point(12, 90);
+            this.tableLayoutPanel.Location = new System.Drawing.Point(12, 94);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 6;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.72727F));
@@ -308,7 +309,7 @@
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(508, 90);
+            this.label17.Location = new System.Drawing.Point(508, 94);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(84, 13);
             this.label17.TabIndex = 8;
@@ -319,7 +320,7 @@
             // 
             this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.Location = new System.Drawing.Point(505, 190);
+            this.label18.Location = new System.Drawing.Point(505, 194);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(87, 77);
             this.label18.TabIndex = 9;
@@ -337,6 +338,18 @@
             this.okButton.TabIndex = 10;
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(19, 64);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(296, 13);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "It is best to re-run the asessment after installing new hardware";
             // 
             // reRunButton
             // 
@@ -356,6 +369,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(604, 351);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.reRunButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.label18);
@@ -371,6 +385,7 @@
             this.Name = "WindowsExperienceIndex";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Windows Experience Index";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WindowsExperienceIndex_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.overallRating)).EndInit();
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
@@ -407,5 +422,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button okButton;
         private UI.ElevatedButton reRunButton;
+        private System.Windows.Forms.Label label12;
     }
 }
