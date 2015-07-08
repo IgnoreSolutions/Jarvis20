@@ -20,6 +20,7 @@ namespace Jarvis20
         [STAThread]
         static void Main(string[] args)
         {
+            Console.WriteLine("Hello world!!!!! :D");
             if (args.Contains("-nogui"))
             {
                 NoGUI.ShowConsoleWindow();
